@@ -1,0 +1,12 @@
+vector<int> GospersHack(int k, int n) { // 从n个位置选择k个位置, 并以二进制的方式返回选择方案
+    vector<int> masks;
+    int cur = (1 << k) - 1;
+    int limit = (1 << n);
+    while (cur < limit) { // O(1)找出下一个方案
+        masks.push_back(cur);
+        int lb = cur & -cur;
+        int r = cur + lb;
+        cur = ((r ^ cur) >> __builtin_ctz(lb) + 2) | r;
+    }
+    return masks;
+}

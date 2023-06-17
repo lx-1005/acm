@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="lx">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/coder/acm" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/algorithm_template" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="九日主机-虚拟机-ubuntu20.04 (b35c145c-519c-4b0b-b8bd-f3aef977d240)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/acm" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="ClangTidy" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="preferClangTidyFilesOverIDESettings" value="false" />
+    </inspection_tool>
+    <inspection_tool class="Clazy" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="OCUnusedGlobalDeclaration" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    <inspection_tool class="OCUnusedIncludeDirective" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    <inspection_tool class="OCUnusedMacro" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="OCUnusedStruct" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    <inspection_tool class="OCUnusedTemplateParameter" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    <inspection_tool class="OCUnusedTypeAlias" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
+    <inspection_tool class="SpellCheckingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" editorAttributes="NOT_USED_ELEMENT_ATTRIBUTES">
+      <option name="processCode" value="false" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
