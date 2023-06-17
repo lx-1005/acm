@@ -8,6 +8,5 @@ F:/coder/acm/build/debug/CMakeFiles/cf_c.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_d.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_e.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_f.dir
-F:/coder/acm/build/debug/CMakeFiles/ttt.dir
 F:/coder/acm/build/debug/CMakeFiles/edit_cache.dir
 F:/coder/acm/build/debug/CMakeFiles/rebuild_cache.dir

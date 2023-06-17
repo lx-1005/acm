@@ -380,40 +380,6 @@ build cf_f.exe: CXX_EXECUTABLE_LINKER__cf_f_Debug CMakeFiles/cf_f.dir/Codeforces
   TARGET_IMPLIB = libcf_f.dll.a
   TARGET_PDB = cf_f.exe.dbg
 
-# =============================================================================
-# Object build statements for EXECUTABLE target ttt
-
-
-#############################################
-# Order-only phony target for ttt
-
-build cmake_object_order_depends_target_ttt: phony || CMakeFiles/ttt.dir
-
-build CMakeFiles/ttt.dir/ttt.cpp.obj: CXX_COMPILER__ttt_Debug F$:/coder/acm/ttt.cpp || cmake_object_order_depends_target_ttt
-  DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\ttt.dir\ttt.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\ttt.dir
-  OBJECT_FILE_DIR = CMakeFiles\ttt.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target ttt
-
-
-#############################################
-# Link the executable ttt.exe
-
-build ttt.exe: CXX_EXECUTABLE_LINKER__ttt_Debug CMakeFiles/ttt.dir/ttt.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\ttt.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = ttt.exe
-  TARGET_IMPLIB = libttt.dll.a
-  TARGET_PDB = ttt.exe.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -460,8 +426,6 @@ build lc_3: phony lc_3.exe
 
 build lc_4: phony lc_4.exe
 
-build ttt: phony ttt.exe
-
 # =============================================================================
 # Folder targets.
 
@@ -470,7 +434,7 @@ build ttt: phony ttt.exe
 #############################################
 # Folder: F:/coder/acm/build/debug
 
-build all: phony lc_1.exe lc_2.exe lc_3.exe lc_4.exe cf_a.exe cf_b.exe cf_c.exe cf_d.exe cf_e.exe cf_f.exe ttt.exe
+build all: phony lc_1.exe lc_2.exe lc_3.exe lc_4.exe cf_a.exe cf_b.exe cf_c.exe cf_d.exe cf_e.exe cf_f.exe
 
 # =============================================================================
 # Built-in targets
