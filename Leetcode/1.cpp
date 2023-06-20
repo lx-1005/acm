@@ -14,7 +14,7 @@ using std::move;
 #define MT make_tuple
 #define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
 #define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RF(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -67,60 +67,54 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 
 
 
-// 翻译题目: 从requests中选出最大子集, 满足每栋楼员工净变化为0
 
-class Solution {
-public:
-    int maximumRequests(int n, vector<vector<int>>& requests) {
-        int m = requests.size(), ans = 0;
-        int selects = 0; // 二进制: 表示requests[]的一个子集
-        auto check = [&]() -> bool { // 方案selects是否满足每栋楼员工净变化为0
-            vector<int> q(n);
-            for (int i = 0; i < n; ++i) {
-                if (selects >> i & 1) {
-                    q[requests[i][0]]--;
-                    q[requests[i][1]]++;
-                }
-            }
-            for (int x : q) {
-                if (x) return false;
-            }
-            
-            return true;
-        };
-        function<void(int)> dfs = [&](int i) {
-            if (i == m) {
-                if (check()) ans = max(ans, __builtin_popcountll(selects));
-                return;
-            }
-            
-            // 选或不选
-            dfs(i + 1);
-            
-            selects |= 1 << i;
-            dfs(i + 1);
-            selects ^= 1 << i;
-        };
-        dfs(0);
-        return ans;
+
+
+
+
+
+struct node {
+    int val;
+    node* pre, *next;
+    node(int v = 0, node* p = nullptr, node* n = nullptr) : val(v), pre(p), next(n) {
+    
     }
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 void solve() {
-
+    int n, q;
+    cin >> n >> q;
+    unordered_map<int, node*> um;
+    node* head = new node(0);
+    um[0] = head;
+    node* p = head;
+    for (int i = 1; i <= n + 1; ++i) {
+        p->next = new node(i, p);
+        p = p->next;
+        um[i] = p;
+    }
+    node* tail = p;
+    
+    while (q--) {
+        int number, x;
+        cin >> number >> x;
+        
+        auto it = um[number], it_pre = it->pre;
+        auto cur = it;
+        while (x--) {
+            if (cur->next != tail) cur = cur->next;
+            else break;
+        }
+        
+        auto tmp1 = it->pre, tmp2 = cur->next;
+        cur->next = head->next;
+        tmp1->next = tmp2;
+        head->next = it;
+    }
+    
+    for (auto it = head->next; it != tail; it = it->next) cout << it->val << ' ';
+    cout << endl;
 }
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
