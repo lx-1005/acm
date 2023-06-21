@@ -18,7 +18,7 @@ public:
 
 inline int Scanner::readInt(){
 
-    register int x=0,f=1;char c=getchar();
+    int x=0,f=1;char c=getchar();
     while(c<'0'||c>'9'){
         if(c=='-') f=-1;c=getchar();}
     while(c>='0'&&c<='9') x=(x<<3)+(x<<1)+(c^48),c=getchar();
@@ -27,7 +27,7 @@ inline int Scanner::readInt(){
 
 inline long long readLL(){
 
-    register long long x=0;int f=1;char c=getchar();
+    long long x=0;int f=1;char c=getchar();
     while(c<'0'||c>'9'){
         if(c=='-') f=-1;c=getchar();}
     while(c>='0'&&c<='9') x=(x<<3)+(x<<1)+(c^48),c=getchar();
@@ -45,7 +45,7 @@ inline void Scanner::readCStr(char *c){
     while (blank(ch)) ch = getchar();
     int p = 0;
     for (c[p++] = ch; !blank(ch = getchar()); c[p++] = ch);
-    c[p] = '\0';//½áÎ²
+    c[p] = '\0';//ï¿½ï¿½Î²
 }
 
 inline string Scanner::readString(){

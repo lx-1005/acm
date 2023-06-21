@@ -107,6 +107,7 @@ int query(int o, int l, int r) {
 }
 
 
+
 // 将下标idx处修改为val, 当前位于节点o
 void modify(int o, int idx, int val) {
     if (tr[o].l == tr[o].r) {
