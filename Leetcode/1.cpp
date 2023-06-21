@@ -65,57 +65,83 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
+// 单点修改, 查询区间最大值
+static const int maxn = 500010; // 根据题目调整
+#define ls(p) (p << 1)
+#define rs(p) (p << 1 | 1)
+
+struct Node {
+    int l, r;
+    LL sum; // 区间和
+    LL t_max; // [l, r]的最大连续和
+    LL l_max, r_max; // [l, r]的最大前缀和, 最大后缀和
+} tr[maxn * 4];
+
+//  将子节点的修改, 更新到父节点上
+void pushup(int o) {
+    tr[o].sum = tr[ls(o)].sum + tr[rs(o)].sum;
+    tr[o].t_max = max({tr[ls(o)].t_max, tr[rs(o)].t_max, tr[ls(o)].r_max + tr[rs(o)].l_max});
+    tr[o].l_max = max({tr[ls(o)].l_max, tr[ls(o)].sum + tr[rs(o)].l_max});
+    tr[o].r_max = max({tr[rs(o)].r_max, tr[rs(o)].sum + tr[ls(o)].r_max});
+}
+
+// 建树
+void build(int o, int l, int r) {
+    tr[o] = {l, r};
+    if (l == r) return; // 叶子
+
+    int mid = (l + r) >> 1;
+    build(o << 1, l, mid);
+    build(o << 1 | 1, mid + 1, r);
+}
+
+// 查询 [l, r] 的最值, 当前位于节点 o
+int query(int o, int l, int r) {
+    if (l <= tr[o].l && r >= tr[o].r) return tr[o].t_max; // [l,r]完全包含[tr[o].l, tr[o].r]
+
+    int mid = (tr[o].l + tr[o].r) >> 1;
+    int mx = INT_MIN;
+    if (l <= mid) mx = query(ls(0), l, r);
+    if (r > mid) mx = max(mx, query(rs(o), l, r));
+    return mx;
+}
 
 
-
-
-
-
-
-
-struct node {
-    int val;
-    node* pre, *next;
-    node(int v = 0, node* p = nullptr, node* n = nullptr) : val(v), pre(p), next(n) {
-    
+// 将下标idx处修改为val, 当前位于节点o
+void modify(int o, int idx, int val) {
+    if (tr[o].l == tr[o].r) {
+        tr[o] = {idx, idx, val, val, val, val};
     }
-};
-
+    else {
+        int mid = (tr[o].l + tr[o].r) >> 1;
+        if (idx <= mid) modify(ls(o), idx, val); // idx在左儿子
+        else modify(rs(o), idx, val); // idx在右儿子
+        pushup(o); // 记得pushup
+    }
+}
 
 void solve() {
-    int n, q;
-    cin >> n >> q;
-    unordered_map<int, node*> um;
-    node* head = new node(0);
-    um[0] = head;
-    node* p = head;
-    for (int i = 1; i <= n + 1; ++i) {
-        p->next = new node(i, p);
-        p = p->next;
-        um[i] = p;
-    }
-    node* tail = p;
+    int n, m;
+    cin >> n >> m;
     
-    while (q--) {
-        int number, x;
-        cin >> number >> x;
-        
-        auto it = um[number], it_pre = it->pre;
-        auto cur = it;
-        while (x--) {
-            if (cur->next != tail) cur = cur->next;
-            else break;
+    build(1, 1, n);
+    
+    for (int i = 1; i <= n; ++i) {
+        int x; cin >> x;
+        modify(1, i, x);
+    }
+    
+    for (int i = 0; i < m; ++i) {
+        int k, x, y; cin >> k >> x >> y;
+        if (x > y) swap(x, y);
+        if (k == 1) {
+            cout << query(1, x, y) << endl;
+        } else {
+            modify(1, x, y);
         }
-        
-        auto tmp1 = it->pre, tmp2 = cur->next;
-        cur->next = head->next;
-        tmp1->next = tmp2;
-        head->next = it;
     }
-    
-    for (auto it = head->next; it != tail; it = it->next) cout << it->val << ' ';
-    cout << endl;
 }
+
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"

@@ -1,5 +1,5 @@
 # ninja log v5
-2	195	7087609184768346	build.ninja	837a37e7cd8e5586
+2	195	7090236244966536	build.ninja	837a37e7cd8e5586
 2	829	7047127439955182	CMakeFiles/a.dir/src/a.cpp.obj	f6ca2c983cf14eaf
 2	689	7038831453884457	CMakeFiles/b.dir/src/b.cpp.obj	7af53eb228f9153d
 2	894	7032704810551201	CMakeFiles/x.dir/algorithm_template/x.cpp.obj	1fecf1a099874eab
@@ -8,8 +8,8 @@
 3	861	7047214121414152	CMakeFiles/1.dir/sublime/1.cpp.obj	77286d5da39cc7f7
 2	1030	7069052694208595	CMakeFiles/lc_a.dir/Leetcode/a.cpp.obj	9f8f56da006415f
 840	898	7078932135847957	cf_a.exe	b75b1babded95da1
-2	860	7083550017227975	CMakeFiles/lc_1.dir/Leetcode/1.cpp.obj	c13c3add405ca8b6
-860	916	7083550017777971	lc_1.exe	e88dc922a2cd4814
+2	851	7089552214349031	CMakeFiles/lc_1.dir/Leetcode/1.cpp.obj	c13c3add405ca8b6
+851	903	7089552214869030	lc_1.exe	e88dc922a2cd4814
 917	974	7078962865039145	cf_d.exe	6631b7a5607fb3bb
 2	846	7078953811168665	CMakeFiles/cf_b.dir/Codeforces/b.cpp.obj	1ff3eda75bff9e5a
 846	905	7078953811748666	cf_b.exe	ef116f43347c58fa
@@ -19,7 +19,3 @@
 2	898	7078996210237586	CMakeFiles/cf_e.dir/Codeforces/e.cpp.obj	3e9a05cbea44b3e5
 898	954	7078996210787590	cf_e.exe	39e8239bbd401c51
 1	215	7082461644189690	CMakeFiles/ttt.dir/ttt.cpp.obj	5a78f0ac428a757d
-2	862	7087660408023063	CMakeFiles/lc_1.dir/Leetcode/1.cpp.obj	c13c3add405ca8b6
-862	944	7087660408820614	lc_1.exe	e88dc922a2cd4814
-3	853	7087660761773192	CMakeFiles/lc_1.dir/Leetcode/1.cpp.obj	c13c3add405ca8b6
-854	907	7087660762301425	lc_1.exe	e88dc922a2cd4814

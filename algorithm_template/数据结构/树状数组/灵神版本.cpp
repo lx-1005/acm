@@ -19,7 +19,7 @@ public:
     
     // 目标：a[0~x-1]的和
     // 用法：sum(x)
-    int sum(int x) {
+    int query_sum(int x) {
         int ans = 0;
         for (int i = x; i; i -= i & -i) {
             ans += tree[i];
@@ -29,7 +29,7 @@ public:
     
     // 目标：a[l~r]的和
     // 用法：sum(l+1, r+1)
-    int sum(int l, int r) {
-        return sum(r) - sum(l - 1);
+    int query_sum(int l, int r) {
+        return query_sum(r) - query_sum(l - 1);
     }
 };
