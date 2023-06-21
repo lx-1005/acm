@@ -97,6 +97,6 @@ void modify(int o, int idx, int x) {
         int mid = (tr[o].l + tr[o].r) >> 1;
         if (idx <= mid) modify(ls(o), idx, x); // idx在左儿子
         else modify(rs(o), idx, x); // idx在右儿子
-        push_up(o, ls(o), rs(o)); // 回溯时更新父节点
+        push_up(o); // 回溯时更新父节点
     }
 }
