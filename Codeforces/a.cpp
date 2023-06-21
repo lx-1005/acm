@@ -76,18 +76,17 @@ const LL infll = 0x3f3f3f3f3f3f3f3fLL, INFLL = 0x7f7f7f7f7f7f7f7fLL;
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-vector<int> unlock[2 << 17];
-
-
-
-
-
-
-
 
 void solve() {
 
 }
+
+
+
+
+
+
+
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"
@@ -98,51 +97,12 @@ int main() {
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
     ios::sync_with_stdio(false); cin.tie(nullptr);
-    
+
     int T = 1;
-    cin >> T;
+//    cin >> T;
     while (T--) {
         solve();
     }
-    
+
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

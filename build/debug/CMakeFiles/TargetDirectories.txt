@@ -1,3 +1,4 @@
+F:/coder/acm/build/debug/CMakeFiles/main.dir
 F:/coder/acm/build/debug/CMakeFiles/lc_1.dir
 F:/coder/acm/build/debug/CMakeFiles/lc_2.dir
 F:/coder/acm/build/debug/CMakeFiles/lc_3.dir

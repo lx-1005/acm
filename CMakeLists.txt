@@ -8,6 +8,8 @@ add_compile_options(-O2)
 #add_compile_options(-Wconversion -Wduplicated-cond
 #                    -fsanitize=address -fsanitize=undefined -fsanitize=undefined -fno-sanitize-recover)
 
+add_executable(main main.cpp dbg.hpp)
+
 
 add_executable(lc_1 Leetcode/1.cpp dbg.hpp)
 add_executable(lc_2 Leetcode/2.cpp dbg.hpp)

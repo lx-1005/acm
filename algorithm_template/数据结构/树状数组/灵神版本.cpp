@@ -1,3 +1,13 @@
+
+
+/*
+ *
+ * 功能:
+ *      单点修改: O(logn)
+ *      求数组前缀和: O(logn)
+ *
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 

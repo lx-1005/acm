@@ -3,8 +3,8 @@
  * ![image-20230501002342828](https://gcore.jsdelivr.net/gh/lx-1005/blog-img@main/images/202305010023876.png)
  *
  * 功能:
- *      快速求数组前缀和: logn
- *      修改数组某个数: logn
+ *      单点修改: O(logn)
+ *      求数组前缀和: O(logn)
  */
 
 #include <bits/stdc++.h>
