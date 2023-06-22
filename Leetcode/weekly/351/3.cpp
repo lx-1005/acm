@@ -56,7 +56,7 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 #ifdef DEBUG
-#include "F:/coder/acm/dbg.hpp"
+#include "../../../dbg.hpp"
 #endif
 // **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
@@ -96,42 +96,3 @@ int main() {
     
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

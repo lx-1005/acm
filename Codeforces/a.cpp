@@ -78,8 +78,10 @@ const LL infll = 0x3f3f3f3f3f3f3f3fLL, INFLL = 0x7f7f7f7f7f7f7f7fLL;
 
 
 void solve() {
-
+    int x; cin >> x;
+    cout << x + 10 << endl;
 }
+
 
 
 
@@ -99,7 +101,7 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr);
 
     int T = 1;
-//    cin >> T;
+    cin >> T;
     while (T--) {
         solve();
     }

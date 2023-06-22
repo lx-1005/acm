@@ -8,7 +8,7 @@ int a[2][2] = {{1, 1}
 
 [f[n], f[n-1]] = [f[n-1], f[n-2]] * a = ... = [f[1], f[0]] * a^(n-1) = [1, 0] * a^(n-1) = ret;
 
-f[n] = ret[0][0];                                
+f[n] = ret[0][0];
 */
 
 using ll = long long; // 防止数太大
@@ -41,13 +41,13 @@ int main() {
 
     ll ret[2][2] = {{1, 0}, {0, 1}}; // 初始位单位阵
     ll a[2][2] = {{1, 1}, {1, 0}}; // 核心，由递推式推出来的
-    
+
     int cnt = n - 1;
     while (cnt) { // 求a^(n-1), 结果存在ret中
         if (cnt & 1) multi(ret, a);
         multi(a, a);
         cnt >>= 1;
-    }      
+    }
 
     cout << ret[0][0] << endl; // ret[0][0]即f[n]
 

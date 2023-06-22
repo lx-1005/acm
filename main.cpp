@@ -65,113 +65,13 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
-//#define int long long
-const int maxn = 200010; // 根据题目调整
-vector<int> a; // 原数组a: 元素下标从0开始
-
-// 根节点: tr[1]
-inline int ls(int p){return p << 1;}     // 左儿子
-inline int rs(int p){return p << 1 | 1;} // 右儿子
-
-struct Node {
-    int l, r; // 该节点掌管a[l~r]
-    int mx, mn; // a[l, r]的元素最值
-    int sum;    // a[l, r]的元素和
-} tr[100 * 4];
-
-//  将子节点的修改, 更新到父节点上
-void push_up(int o, int l_son, int r_son) {
-    tr[o].mx = max(tr[l_son].mx, tr[r_son].mx);
-    tr[o].mn = min(tr[l_son].mn, tr[r_son].mn);
-    tr[o].sum = tr[l_son].sum + tr[r_son].sum;
-}
-
-// 建树: build(1, 0, n - 1);
-void build(int o, int l, int r) { // o: 当前节点, l和r: 节点o掌管的区间
-    if (l == r) {
-        tr[o] = {l, r, a[l], a[l], a[l]};
-        return;
-    }
-
-    // 递归建树
-    tr[o].l = l, tr[o].r = r;
-    int mid = (l + r) >> 1;
-    build(ls(o), l, mid);
-    build(rs(o), mid + 1, r);
-    // 在回溯时, 维护父节点信息
-    push_up(o, ls(o), rs(o));
-}
-
-// 查询a[L~R]的最大值: query(1, L, R);
-int query_mx(int o, int L, int R) {
-    if (L <= tr[o].l && R >= tr[o].r) return tr[o].mx; // [l,r]完全包含[tr[o].l, tr[o].r]
-
-    int mid = (tr[o].l + tr[o].r) >> 1;
-    int mx = INT_MIN;
-    if (L <= mid) mx = max(mx, query_mx(ls(o), L, R));
-    if (R > mid) mx = max(mx, query_mx(rs(o), L, R));
-    return mx;
-}
-
-// 查询a[L~R]的最小值: query(1, L, R);
-int query_mn(int o, int L, int R) {
-    if (L <= tr[o].l && R >= tr[o].r) return tr[o].mn; // [l,r]完全包含[tr[o].l, tr[o].r]
-
-    int mid = (tr[o].l + tr[o].r) >> 1;
-    int mn = INT_MAX;
-    if (L <= mid) mn = min(mn, query_mn(ls(o), L, R));
-    if (R > mid) mn = min(mn, query_mn(rs(o), L, R));
-    return mn;
-}
-
-// 查询a[L~R]的元素和: query(1, L, R);
-int query_sum(int o, int L, int R) {
-    if (L <= tr[o].l && R >= tr[o].r) return tr[o].sum; // [l,r]完全包含[tr[o].l, tr[o].r]
-
-    int mid = (tr[o].l + tr[o].r) >> 1;
-    int s = 0;
-    if (L <= mid) s += query_sum(ls(o), L, R);
-    if (R > mid) s += query_sum(rs(o), L, R);
-    return s;
-}
-
-// 修改a[idx]=x: modify(1, idx, x);
-void modify(int o, int idx, int x) {
-    if (tr[o].l == tr[o].r) tr[o].mx = tr[o].mn = tr[o].sum = x; // 找到 idx 了
-    else {
-        int mid = (tr[o].l + tr[o].r) >> 1;
-        if (idx <= mid) modify(ls(o), idx, x); // idx在左儿子
-        else modify(rs(o), idx, x); // idx在右儿子
-        push_up(o, ls(o), rs(o)); // 回溯时更新父节点
-    }
-}
-
 void solve() {
-    int n, m;
-    cin >> n >> m;
 
+    int x; cin >> x; cout << x + 2  << endl;
 
-
-    for (int i = 0; i < n; ++i) {
-        int x; cin >> x;
-        a.push_back(x);
-    }
-
-
-    build(1, 0, n - 1);
-
-    for (int i = 0; i < m; ++i) {
-        int op, x, y, k;
-        cin >> op;
-        if (op == 1) {
-            cin >> x >> y >> k;
-            for (int j = x; j <= y; ++j) modify(1, j, a[j] + k);
-        } else {
-            cin >> x >> y;
-            cout << query_sum(1, x, y) << endl;
-        }
-    }
 }
+
+
 
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
@@ -179,8 +79,11 @@ void solve() {
 #define ERROR_FILE "F:/coder/acm/error.txt"
 
 int main() {
+#ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
+#endif
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+
     int t = 1;
 //    cin >> t;
     while (t--) solve();
