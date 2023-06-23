@@ -67,7 +67,8 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 
 void solve() {
 
-    int x; cin >> x; cout << x + 2  << endl;
+
+
 
 }
 
