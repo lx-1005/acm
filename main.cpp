@@ -72,7 +72,6 @@ void solve() {
 
 
 
-
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"
 #define ERROR_FILE "F:/coder/acm/error.txt"
