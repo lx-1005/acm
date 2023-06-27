@@ -33,7 +33,7 @@ rule CXX_EXECUTABLE_LINKER__main_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__lc_1_Debug
+rule CXX_COMPILER__1_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -43,7 +43,7 @@ rule CXX_COMPILER__lc_1_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__lc_1_Debug
+rule CXX_EXECUTABLE_LINKER__1_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -52,7 +52,7 @@ rule CXX_EXECUTABLE_LINKER__lc_1_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__lc_2_Debug
+rule CXX_COMPILER__2_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -62,7 +62,7 @@ rule CXX_COMPILER__lc_2_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__lc_2_Debug
+rule CXX_EXECUTABLE_LINKER__2_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -71,7 +71,7 @@ rule CXX_EXECUTABLE_LINKER__lc_2_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__lc_3_Debug
+rule CXX_COMPILER__3_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -81,7 +81,7 @@ rule CXX_COMPILER__lc_3_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__lc_3_Debug
+rule CXX_EXECUTABLE_LINKER__3_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -90,7 +90,7 @@ rule CXX_EXECUTABLE_LINKER__lc_3_Debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__lc_4_Debug
+rule CXX_COMPILER__4_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -100,7 +100,7 @@ rule CXX_COMPILER__lc_4_Debug
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__lc_4_Debug
+rule CXX_EXECUTABLE_LINKER__4_Debug
   command = cmd.exe /C "$PRE_LINK && "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\231.8109.222\bin\mingw\bin\g++.exe" $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT

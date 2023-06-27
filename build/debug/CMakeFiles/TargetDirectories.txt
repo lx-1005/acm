@@ -1,8 +1,8 @@
 F:/coder/acm/build/debug/CMakeFiles/main.dir
-F:/coder/acm/build/debug/CMakeFiles/lc_1.dir
-F:/coder/acm/build/debug/CMakeFiles/lc_2.dir
-F:/coder/acm/build/debug/CMakeFiles/lc_3.dir
-F:/coder/acm/build/debug/CMakeFiles/lc_4.dir
+F:/coder/acm/build/debug/CMakeFiles/1.dir
+F:/coder/acm/build/debug/CMakeFiles/2.dir
+F:/coder/acm/build/debug/CMakeFiles/3.dir
+F:/coder/acm/build/debug/CMakeFiles/4.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_a.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_b.dir
 F:/coder/acm/build/debug/CMakeFiles/cf_c.dir

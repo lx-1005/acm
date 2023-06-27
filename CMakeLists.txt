@@ -11,10 +11,15 @@ add_compile_options(-O2)
 add_executable(main main.cpp dbg.hpp)
 
 
-add_executable(lc_1 Leetcode/weekly/351/1.cpp dbg.hpp)
-add_executable(lc_2 Leetcode/weekly/351/2.cpp dbg.hpp)
-add_executable(lc_3 Leetcode/weekly/351/3.cpp dbg.hpp)
-add_executable(lc_4 Leetcode/weekly/351/4.cpp dbg.hpp)
+#add_executable(lc_1 Leetcode/2weekly/107/1.cpp dbg.hpp)
+#add_executable(lc_2 Leetcode/2weekly/107/2.cpp dbg.hpp)
+#add_executable(lc_3 Leetcode/2weekly/107/3.cpp dbg.hpp)
+#add_executable(lc_4 Leetcode/2weekly/107/4.cpp dbg.hpp)
+add_executable(1 Leetcode/1.cpp dbg.hpp)
+add_executable(2 Leetcode/2.cpp dbg.hpp)
+add_executable(3 Leetcode/3.cpp dbg.hpp)
+add_executable(4 Leetcode/4.cpp dbg.hpp)
+
 
 add_executable(cf_a Codeforces/a.cpp dbg.hpp)
 add_executable(cf_b Codeforces/b.cpp dbg.hpp)

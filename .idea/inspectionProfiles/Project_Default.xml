@@ -11,10 +11,10 @@
     <inspection_tool class="OCUnusedStruct" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     <inspection_tool class="OCUnusedTemplateParameter" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
     <inspection_tool class="OCUnusedTypeAlias" enabled="true" level="INFORMATION" enabled_by_default="true" editorAttributes="INFORMATION_ATTRIBUTES" />
-    <inspection_tool class="SpellCheckingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" editorAttributes="NOT_USED_ELEMENT_ATTRIBUTES">
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" editorAttributes="NOT_USED_ELEMENT_ATTRIBUTES">
       <option name="processCode" value="false" />
-      <option name="processLiterals" value="true" />
-      <option name="processComments" value="true" />
+      <option name="processLiterals" value="false" />
+      <option name="processComments" value="false" />
     </inspection_tool>
   </profile>
 </component>

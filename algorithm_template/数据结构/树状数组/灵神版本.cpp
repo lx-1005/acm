@@ -38,8 +38,8 @@ public:
     }
     
     // 目标：a[l~r]的和
-    // 用法：sum(l+1, r+1)
+    // 用法：query_sum(l, r)
     int query_sum(int l, int r) {
-        return query_sum(r) - query_sum(l - 1);
+        return query_sum(r + 1) - query_sum(l);
     }
 };

@@ -14,7 +14,7 @@ using std::move;
 #define MT make_tuple
 #define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
 #define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RF(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -56,7 +56,7 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 #ifdef DEBUG
-#include "../../../dbg.hpp"
+#include "../dbg.hpp"
 #endif
 // **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
@@ -64,19 +64,43 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+const int mod = 1e9 + 7;
 
-
-
-
-
-
-
+    int numberOfGoodSubarraySplits(vector<int>& nums) {
+        int n = nums.size(), s[n + 1];
+        s[0] = 0;
+        for (int i = 1; i <= n; ++i) s[i] = s[i - 1] + nums[i - 1];
+        
+        vector<int> f(n, -1);
+        function<int(int)> dfs = [&](int t) -> int { // 划分nums[0~t], 有几种划分方法?
+            if (t < 0) return 1;
+            debug(t, f);
+            int& ans = f[t];
+            if (ans != -1) return ans;
+            if (s[t+1] == 0) ans = 0;
+            else if (s[t+1] == 1) ans = 1;
+            else {
+                ans = 0;
+                for (int i = t; i >= 0; --i) {
+                    // [i, t]
+                    if (s[t+1]-s[i] > 1) break;
+                    if (s[t+1]-s[i]==1) ans = (ans + dfs(i - 1)) % mod;
+                }
+            }
+            return ans % mod;
+        };
+        return dfs(n - 1);
+    }
 
 void solve() {
-    Solution sol;
-    
-    
+        VI nums = read<VI>(5);
+    numberOfGoodSubarraySplits(nums);
+
+
 }
+
+
+
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"
@@ -86,13 +110,11 @@ int main() {
 #ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
-    ios::sync_with_stdio(false); cin.tie(nullptr);
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
     
     int t = 1;
 //    cin >> t;
-    while (t--) {
-        solve();
-    }
+    while (t--) solve();
     
     return 0;
 }

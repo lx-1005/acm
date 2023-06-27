@@ -56,7 +56,7 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 #ifdef DEBUG
-#include "../../../dbg.hpp"
+#include "../dbg.hpp"
 #endif
 // **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
@@ -65,10 +65,17 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
+
+
 void solve() {
 
 
+
+
+
 }
+
+
 
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
@@ -79,7 +86,7 @@ int main() {
 #ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
-    ios::sync_with_stdio(false); cin.tie(nullptr);
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
 //    cin >> t;

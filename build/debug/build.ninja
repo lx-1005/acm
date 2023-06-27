@@ -75,140 +75,140 @@ build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.o
   TARGET_PDB = main.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target lc_1
+# Object build statements for EXECUTABLE target 1
 
 
 #############################################
-# Order-only phony target for lc_1
+# Order-only phony target for 1
 
-build cmake_object_order_depends_target_lc_1: phony || CMakeFiles/lc_1.dir
+build cmake_object_order_depends_target_1: phony || CMakeFiles/1.dir
 
-build CMakeFiles/lc_1.dir/Leetcode/weekly/351/1.cpp.obj: CXX_COMPILER__lc_1_Debug F$:/coder/acm/Leetcode/weekly/351/1.cpp || cmake_object_order_depends_target_lc_1
+build CMakeFiles/1.dir/Leetcode/1.cpp.obj: CXX_COMPILER__1_Debug F$:/coder/acm/Leetcode/1.cpp || cmake_object_order_depends_target_1
   DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\lc_1.dir\Leetcode\weekly\351\1.cpp.obj.d
+  DEP_FILE = CMakeFiles\1.dir\Leetcode\1.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\lc_1.dir
-  OBJECT_FILE_DIR = CMakeFiles\lc_1.dir\Leetcode\weekly\351
+  OBJECT_DIR = CMakeFiles\1.dir
+  OBJECT_FILE_DIR = CMakeFiles\1.dir\Leetcode
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target lc_1
+# Link build statements for EXECUTABLE target 1
 
 
 #############################################
-# Link the executable lc_1.exe
+# Link the executable 1.exe
 
-build lc_1.exe: CXX_EXECUTABLE_LINKER__lc_1_Debug CMakeFiles/lc_1.dir/Leetcode/weekly/351/1.cpp.obj
+build 1.exe: CXX_EXECUTABLE_LINKER__1_Debug CMakeFiles/1.dir/Leetcode/1.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\lc_1.dir
+  OBJECT_DIR = CMakeFiles\1.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = lc_1.exe
-  TARGET_IMPLIB = liblc_1.dll.a
-  TARGET_PDB = lc_1.exe.dbg
+  TARGET_FILE = 1.exe
+  TARGET_IMPLIB = lib1.dll.a
+  TARGET_PDB = 1.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target lc_2
+# Object build statements for EXECUTABLE target 2
 
 
 #############################################
-# Order-only phony target for lc_2
+# Order-only phony target for 2
 
-build cmake_object_order_depends_target_lc_2: phony || CMakeFiles/lc_2.dir
+build cmake_object_order_depends_target_2: phony || CMakeFiles/2.dir
 
-build CMakeFiles/lc_2.dir/Leetcode/weekly/351/2.cpp.obj: CXX_COMPILER__lc_2_Debug F$:/coder/acm/Leetcode/weekly/351/2.cpp || cmake_object_order_depends_target_lc_2
+build CMakeFiles/2.dir/Leetcode/2.cpp.obj: CXX_COMPILER__2_Debug F$:/coder/acm/Leetcode/2.cpp || cmake_object_order_depends_target_2
   DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\lc_2.dir\Leetcode\weekly\351\2.cpp.obj.d
+  DEP_FILE = CMakeFiles\2.dir\Leetcode\2.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\lc_2.dir
-  OBJECT_FILE_DIR = CMakeFiles\lc_2.dir\Leetcode\weekly\351
+  OBJECT_DIR = CMakeFiles\2.dir
+  OBJECT_FILE_DIR = CMakeFiles\2.dir\Leetcode
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target lc_2
+# Link build statements for EXECUTABLE target 2
 
 
 #############################################
-# Link the executable lc_2.exe
+# Link the executable 2.exe
 
-build lc_2.exe: CXX_EXECUTABLE_LINKER__lc_2_Debug CMakeFiles/lc_2.dir/Leetcode/weekly/351/2.cpp.obj
+build 2.exe: CXX_EXECUTABLE_LINKER__2_Debug CMakeFiles/2.dir/Leetcode/2.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\lc_2.dir
+  OBJECT_DIR = CMakeFiles\2.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = lc_2.exe
-  TARGET_IMPLIB = liblc_2.dll.a
-  TARGET_PDB = lc_2.exe.dbg
+  TARGET_FILE = 2.exe
+  TARGET_IMPLIB = lib2.dll.a
+  TARGET_PDB = 2.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target lc_3
+# Object build statements for EXECUTABLE target 3
 
 
 #############################################
-# Order-only phony target for lc_3
+# Order-only phony target for 3
 
-build cmake_object_order_depends_target_lc_3: phony || CMakeFiles/lc_3.dir
+build cmake_object_order_depends_target_3: phony || CMakeFiles/3.dir
 
-build CMakeFiles/lc_3.dir/Leetcode/weekly/351/3.cpp.obj: CXX_COMPILER__lc_3_Debug F$:/coder/acm/Leetcode/weekly/351/3.cpp || cmake_object_order_depends_target_lc_3
+build CMakeFiles/3.dir/Leetcode/3.cpp.obj: CXX_COMPILER__3_Debug F$:/coder/acm/Leetcode/3.cpp || cmake_object_order_depends_target_3
   DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\lc_3.dir\Leetcode\weekly\351\3.cpp.obj.d
+  DEP_FILE = CMakeFiles\3.dir\Leetcode\3.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\lc_3.dir
-  OBJECT_FILE_DIR = CMakeFiles\lc_3.dir\Leetcode\weekly\351
+  OBJECT_DIR = CMakeFiles\3.dir
+  OBJECT_FILE_DIR = CMakeFiles\3.dir\Leetcode
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target lc_3
+# Link build statements for EXECUTABLE target 3
 
 
 #############################################
-# Link the executable lc_3.exe
+# Link the executable 3.exe
 
-build lc_3.exe: CXX_EXECUTABLE_LINKER__lc_3_Debug CMakeFiles/lc_3.dir/Leetcode/weekly/351/3.cpp.obj
+build 3.exe: CXX_EXECUTABLE_LINKER__3_Debug CMakeFiles/3.dir/Leetcode/3.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\lc_3.dir
+  OBJECT_DIR = CMakeFiles\3.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = lc_3.exe
-  TARGET_IMPLIB = liblc_3.dll.a
-  TARGET_PDB = lc_3.exe.dbg
+  TARGET_FILE = 3.exe
+  TARGET_IMPLIB = lib3.dll.a
+  TARGET_PDB = 3.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target lc_4
+# Object build statements for EXECUTABLE target 4
 
 
 #############################################
-# Order-only phony target for lc_4
+# Order-only phony target for 4
 
-build cmake_object_order_depends_target_lc_4: phony || CMakeFiles/lc_4.dir
+build cmake_object_order_depends_target_4: phony || CMakeFiles/4.dir
 
-build CMakeFiles/lc_4.dir/Leetcode/weekly/351/4.cpp.obj: CXX_COMPILER__lc_4_Debug F$:/coder/acm/Leetcode/weekly/351/4.cpp || cmake_object_order_depends_target_lc_4
+build CMakeFiles/4.dir/Leetcode/4.cpp.obj: CXX_COMPILER__4_Debug F$:/coder/acm/Leetcode/4.cpp || cmake_object_order_depends_target_4
   DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\lc_4.dir\Leetcode\weekly\351\4.cpp.obj.d
+  DEP_FILE = CMakeFiles\4.dir\Leetcode\4.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\lc_4.dir
-  OBJECT_FILE_DIR = CMakeFiles\lc_4.dir\Leetcode\weekly\351
+  OBJECT_DIR = CMakeFiles\4.dir
+  OBJECT_FILE_DIR = CMakeFiles\4.dir\Leetcode
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target lc_4
+# Link build statements for EXECUTABLE target 4
 
 
 #############################################
-# Link the executable lc_4.exe
+# Link the executable 4.exe
 
-build lc_4.exe: CXX_EXECUTABLE_LINKER__lc_4_Debug CMakeFiles/lc_4.dir/Leetcode/weekly/351/4.cpp.obj
+build 4.exe: CXX_EXECUTABLE_LINKER__4_Debug CMakeFiles/4.dir/Leetcode/4.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\lc_4.dir
+  OBJECT_DIR = CMakeFiles\4.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = lc_4.exe
-  TARGET_IMPLIB = liblc_4.dll.a
-  TARGET_PDB = lc_4.exe.dbg
+  TARGET_FILE = 4.exe
+  TARGET_IMPLIB = lib4.dll.a
+  TARGET_PDB = 4.exe.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target cf_a
@@ -440,6 +440,14 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build 1: phony 1.exe
+
+build 2: phony 2.exe
+
+build 3: phony 3.exe
+
+build 4: phony 4.exe
+
 build cf_a: phony cf_a.exe
 
 build cf_b: phony cf_b.exe
@@ -452,14 +460,6 @@ build cf_e: phony cf_e.exe
 
 build cf_f: phony cf_f.exe
 
-build lc_1: phony lc_1.exe
-
-build lc_2: phony lc_2.exe
-
-build lc_3: phony lc_3.exe
-
-build lc_4: phony lc_4.exe
-
 build main: phony main.exe
 
 # =============================================================================
@@ -470,7 +470,7 @@ build main: phony main.exe
 #############################################
 # Folder: F:/coder/acm/build/debug
 
-build all: phony main.exe lc_1.exe lc_2.exe lc_3.exe lc_4.exe cf_a.exe cf_b.exe cf_c.exe cf_d.exe cf_e.exe cf_f.exe
+build all: phony main.exe 1.exe 2.exe 3.exe 4.exe cf_a.exe cf_b.exe cf_c.exe cf_d.exe cf_e.exe cf_f.exe
 
 # =============================================================================
 # Built-in targets
