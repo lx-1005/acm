@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
+#include <vector>
 using namespace __gnu_pbds; //required
 using namespace std;
 using std::move;
@@ -50,19 +51,44 @@ using TIII = std::tuple<int, int, int>;
 //      s.order_of_key(x); // 返回s中严格<x的元素个数
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
-template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
-template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
-template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
+
+template<typename T>
+T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
+template<typename T>
+T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
+template<typename T>
+T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
+template<typename T>
+T quick_power(T x, T y, T mod) {
+    T res = 1, cur = x;
+    while (y) {
+        if (y & 1) res = res * cur % mod;
+        cur = cur * cur % mod;
+        y >>= 1;
+    }
+    return res % mod;
+}
 
 #ifdef DEBUG
+
 #include "F:/coder/acm/dbg.hpp"
+
 #endif
 // **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+//const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+
+
+/*
+ * hot hto toh tho oht oth
+ * too oto oot
+ *
+ */
+
+
+
 
 
 void solve() {
