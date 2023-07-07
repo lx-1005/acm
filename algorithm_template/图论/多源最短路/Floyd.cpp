@@ -1,9 +1,6 @@
 
-
-
 /*
  * 多源最短路：O(n^3) 求任意两个节点i->j的最短距离d[i][j]
- *          if (d[i][j] > inf / 2) 说明i->j不可达
  */
 
 
@@ -11,33 +8,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 210; // 最大点数
-const int INF = 1e9;
-int n, m; // 点数，边数
-int d[N][N]; // d[i][j]: i号点->j号点的最短距离
-
-void build() { // 建图
-    cin >> n >> m;
-    for (int i = 1; i <= n; i ++ ) {
-        for (int j = 1; j <= n; j ++ ) {
-            if (i == j) d[i][j] = 0;
-            else d[i][j] = INF;
+class Folyd {
+    int n; // 点数
+    vector<vector<int>> d;
+public:
+    Folyd(int n, vector<vector<int>> &edges) {
+        // 邻接矩阵（初始化为无穷大，表示 i 到 j 没有边）
+        d = vector<vector<int>>(n, vector<int>(n, INT_MAX / 3));
+        for (int i = 0; i < n; ++i) d[i][i] = 0;
+        for (auto &e: edges) {
+            int a = e[0], b = e[1], w = e[2];
+            d[a][b] = min(d[a][b], w); // 防止重边和自环
         }
+        
+        for (int k = 0; k < n; ++k)
+            for (int i = 0; i < n; ++i)
+                for (int j = 0; j < n; ++j)
+                    d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
     }
-
-    while (m--) { // 添加边a->b，权值为w
-        int a, b, w;
-        scanf("%d%d%d", &a, &b, &w);
-        d[a][b] = min(d[a][b], w);
+    
+    void addEdge(vector<int> e) { // 添加一条边
+        int a = e[0], b = e[1], w = e[2];
+        if (w >= d[a][b]) return; // 无需更新
+        
+        for (int i = 0; i < n; ++i)
+            for (int j = 0; j < n; ++j)
+                d[i][j] = min(d[i][j], d[i][a] + w + d[b][j]); // i->j=i->a+a->b+b->j
     }
-}
-
-
-// 求任意两个节点i和j间的最短距离d[][]
-// if (d[i][j] > inf / 2) 说明i->j不可达
-void floyd() {
-    for (int k = 1; k <= n; k ++ )
-        for (int i = 1; i <= n; i ++ )
-            for (int j = 1; j <= n; j ++ )
-                d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
-}
+    
+    int shortestPath(int start, int end) { // 返回start -> end 的最短路长度, 若不可达返回-1
+        int ans = d[start][end];
+        return ans < INT_MAX / 3 ? ans : -1;
+    }
+};

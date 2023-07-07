@@ -69,6 +69,7 @@ T quick_power(T x, T y, T mod) {
     return res % mod;
 }
 
+
 #ifdef DEBUG
 
 #include "F:/coder/acm/dbg.hpp"
@@ -92,7 +93,6 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 
 
 void solve() {
-
 
 }
 
