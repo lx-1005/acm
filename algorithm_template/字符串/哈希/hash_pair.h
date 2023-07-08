@@ -6,8 +6,8 @@ using namespace std;
 
 
 // 方法1:
-// 使用: unordered_set<PII, pair_hash> s;
-struct pair_hash {
+// 使用: unordered_set<PII, myhash> s;
+struct myhash {
     template <class T1, class T2>
     size_t operator()(const pair<T1, T2>& p) const {
         return hash<T1>()(p.first) ^ hash<T2>()(p.second);
@@ -26,15 +26,15 @@ class Solution {
 public:
     int minimizeConcatenatedLength(vector<string>& words) {
         if (words.size() == 1) return words[0].size();
-        
+
         int n = words.size(), ans = INT_MAX;
-        
+
         function<void(int, string, int)> dfs = [&](int i, string pre, int len) {
             if (i == n) {
                 ans = min(ans, len);
                 return;
             }
-            
+
             string s = words[i];
             int sz = s.size();
             string tmp = pre;
@@ -45,7 +45,7 @@ public:
                 pre[1] = s.back();
                 dfs(i + 1, pre, len + sz);
             }
-            
+
             pre = tmp;
             if (s[sz - 1] == pre[0]) {
                 pre[0] = s[0];

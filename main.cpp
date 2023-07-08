@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
-#include <vector>
 using namespace __gnu_pbds; //required
 using namespace std;
 using std::move;
