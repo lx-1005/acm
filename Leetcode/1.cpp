@@ -68,6 +68,9 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 
 
 
+
+
+
 void solve() {
 
 
@@ -75,6 +78,7 @@ void solve() {
 
 
 }
+
 
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
