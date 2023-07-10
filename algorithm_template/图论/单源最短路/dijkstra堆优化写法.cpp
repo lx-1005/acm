@@ -13,7 +13,7 @@ struct dijkstra {
     const int inf = 0x3f3f3f3f;
     int n; // 点数
     vector<vector<PII>> g;
-    
+
     dijkstra(int n, vector<vector<int>>& edges) : n(n) {
         // 建图: 初始化两点间无边
         g = vector<vector<PII>>(n);
@@ -27,26 +27,22 @@ struct dijkstra {
     void shortPath(int start) {
         vector<int> d(n, inf);
         d[start] = 0;
-        vector<bool> st(n); // st[i]: 标记节点是否已经确定d[i]
-        
         priority_queue<PII, vector<PII>, greater<PII>> heap; // <start到节点的距离, 节点编号>
         heap.push({0, start}); // start号点的最短距离为0
-        
+
         while (heap.size()) {
-            auto [mn, u] = heap.top(); // 取所有未确定最短路的点中距离start最近的点u, 距离为mn
+            auto [mn, u] = heap.top();
             heap.pop();
-            
-            if (st[u]) continue;
-            st[u] = true;
-            
+
             for (auto& [v, w] : g[u]) { //遍历ver的所有出边
-                if (d[v] > d[u] + w) { // start->v=start->u+u->v
-                    d[v] = d[u] + w;
+                if (d[v] > mn + w) { // start->v=start->u+u->v
+                    //  用已经确定最短路的点u，更新u的邻居
+                    d[v] = mn + w;
                     heap.push({d[v], v});
                 }
             }
         }
-        
+
         for (int i = 0; i < n; ++i) { // 所有从start不可达的点，距离我们设置为-1
             if (d[i] == inf) d[i] = -1;
         }
