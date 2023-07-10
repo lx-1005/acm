@@ -1,3 +1,9 @@
+#pragma GCC optimize("O2")
+#pragma GCC optimize("O3")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC target("avx,avx2,fma")
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -73,7 +79,9 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 
 void solve() {
 
-
+     int* f[20];
+     mst(f, 0);
+     f[0] = NULL;
 
 
 
