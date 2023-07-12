@@ -86,52 +86,51 @@ const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -
 
 
 const int N = 1010;
-int n, w;
+int w[N][N], vis[N][N];
+int n;
+
 
 void solve() {
     cin >> n;
-    VVI w(n, VI(n));
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             cin >> w[i][j];
         }
     }
 
-    int a = 0, b = 0;
-    VVI vis(n, VI(n));
+    int peak = 0, valley = 0;
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             if (vis[i][j]) continue;
 
             vis[i][j] = true;
-            vector<int> neighbor;
             vector<PII> q{{i, j}};
+            bool has_higher = false, has_lower = false;
+            int cnt = 0;
             while (q.size()) {
                 vector<PII> tmp;
-                for (int k = 0; k < (int)q.size(); ++k) {
+                for (int k = 0; k < q.size(); ++k) {
                     auto [x, y] = q[k];
                     for (int d = 0; d < 8; ++d) {
                         int nx = x + dx[d], ny = y + dy[d];
                         if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-                        if (w[nx][ny] != w[x][y]) neighbor.EB(w[nx][ny]);
-                        else if (!vis[nx][ny]) {
-                            tmp.EB(nx, ny);
+                        if (w[nx][ny] != w[x][y]) {
+                            if (w[nx][ny] > w[x][y]) has_higher = true;
+                            else has_lower = true;
+                        } else if (!vis[nx][ny]) {
+                            ++cnt;
                             vis[nx][ny] = true;
+                            tmp.EB(nx, ny);
                         }
                     }
                 }
                 q = move(tmp);
             }
-            int up = 0, down = 0;
-            for (int neigh : neighbor) {
-                if (neigh > w[i][j]) ++up;
-                else ++down;
-            }
-            if (up == (int)neighbor.size()) ++a;
-            if (down == (int)neighbor.size()) ++b;
+            if (!has_higher) ++peak;
+            if (!has_lower) ++valley;
         }
     }
-    cout << a << ' ' << b << endl;
+    cout << peak << ' ' << valley << endl;
 }
 
 

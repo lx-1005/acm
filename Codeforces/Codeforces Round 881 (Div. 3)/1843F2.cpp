@@ -14,6 +14,7 @@
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds; //required
 using namespace std;
+using std::move;
 
 #define PB push_back
 #define EB emplace_back
@@ -78,68 +79,46 @@ T quick_power(T x, T y, T mod) {
     return res % mod;
 }
 
+
+#ifdef DEBUG
+
+#include "F:/coder/acm/dbg.hpp"
+
+#endif
+// **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+//const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-
-
-const int N = 1010;
-int n, w;
 
 void solve() {
-    cin >> n;
-    VVI w(n, VI(n));
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cin >> w[i][j];
-        }
-    }
+    int n; cin >> n;
+    vector<int> a(n);
+    For (i, 0, n) cin >> a[i];
+    sort(all(a));
 
-    int a = 0, b = 0;
-    VVI vis(n, VI(n));
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            if (vis[i][j]) continue;
-
-            vis[i][j] = true;
-            vector<int> neighbor;
-            vector<PII> q{{i, j}};
-            while (q.size()) {
-                vector<PII> tmp;
-                for (int k = 0; k < (int)q.size(); ++k) {
-                    auto [x, y] = q[k];
-                    for (int d = 0; d < 8; ++d) {
-                        int nx = x + dx[d], ny = y + dy[d];
-                        if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
-                        if (w[nx][ny] != w[x][y]) neighbor.EB(w[nx][ny]);
-                        else if (!vis[nx][ny]) {
-                            tmp.EB(nx, ny);
-                            vis[nx][ny] = true;
-                        }
-                    }
-                }
-                q = move(tmp);
-            }
-            int up = 0, down = 0;
-            for (int neigh : neighbor) {
-                if (neigh > w[i][j]) ++up;
-                else ++down;
-            }
-            if (up == (int)neighbor.size()) ++a;
-            if (down == (int)neighbor.size()) ++b;
-        }
+    int ans = 0;
+    for (int i = 0; i < n / 2; ++i) {
+        ans += a[n - 1 - i] - a[i];
     }
-    cout << a << ' ' << b << endl;
+    cout << ans << endl;
 }
 
 
+
+#define INPUT_FILE "F:/coder/acm/input.txt"
+#define OUTPUT_FILE "F:/coder/acm/output.txt"
+#define ERROR_FILE "F:/coder/acm/error.txt"
+
 int main() {
+#ifdef LOCAL
+    freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
+#endif
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
-//    cin >> t;
+    cin >> t;
     while (t--) solve();
 
     return 0;

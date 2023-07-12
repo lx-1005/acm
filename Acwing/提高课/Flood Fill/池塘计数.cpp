@@ -1,9 +1,19 @@
+/*******************************
+| Author:  JiuR
+| Problem: %$Problem$%
+| Contest: %$Contest$%
+| URL:     %$URL$%
+| When:    %$Time$%
+|
+| Memory:  %$MemoryL$% MB
+| Time:    %$TimeL$% ms
+*******************************/
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds; //required
 using namespace std;
-using std::move;
 
 #define PB push_back
 #define EB emplace_back
@@ -14,7 +24,7 @@ using std::move;
 #define MT make_tuple
 #define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
 #define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RF(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -50,112 +60,74 @@ using TIII = std::tuple<int, int, int>;
 //      s.order_of_key(x); // 返回s中严格<x的元素个数
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
-template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
-template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
-LL MOD(LL a, LL m) { return (a % m + m) % m; }
-LL inverse(LL a, LL m) { a = MOD(a, m); if(a <= 1)return a; return MOD((1 - inverse(m, a) * m) / a, m); }
-LL quick_pow(LL a, LL b, LL mod) { // (a^b)%mod
-    a %= mod;
-    if(b < 0)a = inverse(a, mod), b = -b;
-    LL ans = 1;
-    while(b) {
-        if(b & 1)ans = ans * a % mod;
-        a = a * a % mod;
-        b >>= 1;
+
+template<typename T>
+T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
+template<typename T>
+T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
+template<typename T>
+T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
+template<typename T>
+T quick_power(T x, T y, T mod) {
+    T res = 1, cur = x;
+    while (y) {
+        if (y & 1) res = res * cur % mod;
+        cur = cur * cur % mod;
+        y >>= 1;
     }
-    return ans % mod;
+    return res % mod;
 }
 
-#ifdef DEBUG
-#include "F:/coder/acm/dbg.hpp"
-#endif
-// **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-const LL infll = 0x3f3f3f3f3f3f3f3fLL, INFLL = 0x7f7f7f7f7f7f7f7fLL;
+//const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
 
-
-
-
+const int N = 1010;
+char g[N][N];
 
 
 void solve() {
-    int n, k, q;
-    cin >> n >> k >> q;
-    LL len = 0, ans = 0;
-    for (int i = 0; i < n; ++i) {
-         int x;
-         cin >> x;
-         if (x <= q) ++len;
-         else {
-             if (len >= k) {
-                 ans += 1ll * (len+2-k) * (len+1-k) / 2;
-             }
-             len = 0;
-         }
-    }
-    if (len >= k) ans += (len+2-k) * (len+1-k) / 2;
+    int n, m;
+    cin >> n >> m;
+    For(i, 0, n) cin >> g[i];
+
+    int ans = 0;
+    For(i, 0, n) {
+        For(j, 0, m) {
+            if (g[i][j] == 'W') {
+                ans += 1;
+                g[i][j] = '.';
+                vector<PII> q{{i, j}};
+                while (q.size()) {
+                    vector<PII> tmp;
+                    For(k, 0, q.size()) {
+                        auto [x, y] = q[k];
+                        For(d, 0, 8) {
+                            int nx = x + dx[d], ny = y + dy[d];
+                            if (nx >= 0 && nx < n && ny >= 0 && ny < m && g[nx][ny] == 'W') {
+                                g[nx][ny] = '.';
+                                tmp.PB({nx, ny});
+                            }
+                        }
+                    }
+                    q = move(tmp);
+                }
+            }
+        }
+    } 
     cout << ans << endl;
 }
 
-#define INPUT_FILE "F:/coder/acm/input.txt"
-#define OUTPUT_FILE "F:/coder/acm/output.txt"
-#define ERROR_FILE "F:/coder/acm/error.txt"
 
 int main() {
-#ifdef LOCAL
-    freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
-#endif
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+
     int t = 1;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    
+    // cin >> t;
+    while (t--) solve();
+
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
