@@ -73,8 +73,6 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 
 
 
-const int N = 1010;
-int n, g[N][N];
 
 void solve() {
 
