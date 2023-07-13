@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_definitions(-DLOCAL -DDEBUG) # 本地调试
 
 add_compile_options(-O2 -fcoroutines)
+set(CMAKE_EXE_LINKER_FLAGS "-Wl,--stack,67108864")
 #add_compile_options(-Wconversion -Wduplicated-cond
 #                    -fsanitize=address -fsanitize=undefined -fsanitize=undefined -fno-sanitize-recover)
 

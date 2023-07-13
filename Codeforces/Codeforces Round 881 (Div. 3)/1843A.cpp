@@ -86,23 +86,14 @@ T quick_power(T x, T y, T mod) {
 
 #endif
 // **************************************************************
+//const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
 void solve() {
-    int n; cin >> n;
-    vector<int> a(n);
-    For (i, 0, n) cin >> a[i];
-    sort(all(a));
 
-    int ans = 0;
-    for (int i = 0; i < n / 2; ++i) {
-        ans += a[n - 1 - i] - a[i];
-    }
-    cout << ans << endl;
 }
 
 

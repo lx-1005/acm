@@ -66,6 +66,7 @@ build CMakeFiles/main.dir/main.cpp.obj: CXX_COMPILER__main_Debug F$:/coder/acm/m
 
 build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\main.dir
   POST_BUILD = cd .
@@ -100,6 +101,7 @@ build CMakeFiles/1.dir/Leetcode/1.cpp.obj: CXX_COMPILER__1_Debug F$:/coder/acm/L
 
 build 1.exe: CXX_EXECUTABLE_LINKER__1_Debug CMakeFiles/1.dir/Leetcode/1.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\1.dir
   POST_BUILD = cd .
@@ -134,6 +136,7 @@ build CMakeFiles/2.dir/Leetcode/2.cpp.obj: CXX_COMPILER__2_Debug F$:/coder/acm/L
 
 build 2.exe: CXX_EXECUTABLE_LINKER__2_Debug CMakeFiles/2.dir/Leetcode/2.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\2.dir
   POST_BUILD = cd .
@@ -168,6 +171,7 @@ build CMakeFiles/3.dir/Leetcode/3.cpp.obj: CXX_COMPILER__3_Debug F$:/coder/acm/L
 
 build 3.exe: CXX_EXECUTABLE_LINKER__3_Debug CMakeFiles/3.dir/Leetcode/3.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\3.dir
   POST_BUILD = cd .
@@ -202,6 +206,7 @@ build CMakeFiles/4.dir/Leetcode/4.cpp.obj: CXX_COMPILER__4_Debug F$:/coder/acm/L
 
 build 4.exe: CXX_EXECUTABLE_LINKER__4_Debug CMakeFiles/4.dir/Leetcode/4.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\4.dir
   POST_BUILD = cd .
