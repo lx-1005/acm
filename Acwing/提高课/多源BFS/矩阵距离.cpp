@@ -69,38 +69,49 @@ T quick_power(T x, T y, T mod) {
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-int n, k, dis[200010];
+const int N = 1010;
+int n, m;
+char a[N][N];
+int dis[N][N];
 
-int bfs() {
-    if (n >= k) return n - k; // 只能不断-1
+void solve() {
+    cin >> n >> m;
+    mst(dis, 0x3f);
+    vector<PII> q;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            cin >> a[i][j];
+            if (a[i][j] == '1') {
+                q.emplace_back(i, j);
+                dis[i][j] = 0;
+            }
+        }
+    }
 
-    mst(dis, -1); // dis[i]: 从n到i花费的时间
-    dis[n] = 0;
-    vector<PII> q{{n, 0}};
     while (q.size()) {
         vector<PII> tmp;
         for (int i = 0; i < q.size(); ++i) {
-            auto [s, distance] = q[i];
-            for (auto t : {s - 1, s + 1, s * 2}) {
-                // 到负数一定不会更优
-                // n最大能到的位置不会>=k*2
-                if (t < 0 || t >= 200000 || dis[t] != -1) continue;
-                dis[t] = distance + 1;
-                tmp.emplace_back(t, dis[t]);
-                if (t == k) return dis[t];
+            auto [x, y] = q[i];
+            int distance = dis[x][y];
+            for (int d = 0; d < 4; ++d) {
+                int nx = x + dx[d], ny = y + dy[d];
+                if (nx < 1 || nx > n || ny < 1 || ny > m || dis[nx][ny] != inf) continue;
+                tmp.emplace_back(nx, ny);
+                dis[nx][ny] = distance + 1;
             }
+          
         }
         q = move(tmp);
     }
-    return -1;
-}
-
-void solve() {
-    cin >> n >> k;
-    cout << bfs() << endl;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            cout << dis[i][j] << ' ';
+        }
+        cout << endl;
+    }
 }
 
 

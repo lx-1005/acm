@@ -72,37 +72,57 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-int n, k, dis[200010];
+string op_A(string& s) {
+    return string(s.rbegin(), s.rend());
+}
 
-int bfs() {
-    if (n >= k) return n - k; // 只能不断-1
+string op_B(string& s) {
+    string ans;
+    for (int i : {3, 0, 1, 2, 5, 6, 7, 4}) {
+        ans.push_back(s[i]);
+    }
+    return ans;
+}
+string op_C(string& s) {
+    string ans;
+    for (int i : {0, 6, 1, 3, 4, 2, 5, 7}) {
+        ans.push_back(s[i]);
+    }
+    return ans;
+}
 
-    mst(dis, -1); // dis[i]: 从n到i花费的时间
-    dis[n] = 0;
-    vector<PII> q{{n, 0}};
+void solve() {
+    // s->t的权值为1的最短路问题 -> bfs
+    string s = "12345678", t; 
+    for (int i = 0; i < 8; ++i) {
+        int x; cin >> x;
+        t.push_back(x + '0');
+    }
+
+    vector<string> q = {s};
+    unordered_map<string, string> dis;
+    dis[s] = "";
     while (q.size()) {
-        vector<PII> tmp;
+        vector<string> tmp;
         for (int i = 0; i < q.size(); ++i) {
-            auto [s, distance] = q[i];
-            for (auto t : {s - 1, s + 1, s * 2}) {
-                // 到负数一定不会更优
-                // n最大能到的位置不会>=k*2
-                if (t < 0 || t >= 200000 || dis[t] != -1) continue;
-                dis[t] = distance + 1;
-                tmp.emplace_back(t, dis[t]);
-                if (t == k) return dis[t];
+            auto st = q[i];
+            auto op = dis[q[i]];
+            if (st == t) {
+                cout << op.size() << endl;
+                if (op.size()) cout << op << endl;
+                return;
+            }
+            vector<string> nxt{op_A(st), op_B(st), op_C(st)};
+            for (int i = 0; i < 3; ++i) {
+                if (!dis.count(nxt[i])) {
+                    tmp.emplace_back(nxt[i]);
+                    dis[nxt[i]] = op + (i == 0 ? "A" : (i == 1 ? "B" : "C"));
+                }
             }
         }
         q = move(tmp);
     }
-    return -1;
 }
-
-void solve() {
-    cin >> n >> k;
-    cout << bfs() << endl;
-}
-
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);

@@ -73,35 +73,6 @@ const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
-class Solution {
-public:
-    bool exist(vector<vector<char>>& board, string word) {
-        int m = board.size(), n = board[0].size(), len = word.size();
-        vector<vector<bool>> vis(m, vector<bool>(n));
-        function<bool(int, int, int)> dfs = [&](int i, int j, int p) -> bool {
-            vis[i][j] = true;
-            if (p == len - 1) return true;
-
-            for (int d = 0; d < 4; ++d) {
-                int x = i + dx[d], y = j + dy[d];
-                if (x >= 0 && x < m && y >= 0 && y < n && !vis[x][y] && word[p + 1] == board[x][y]) {
-                    if (dfs(x, y, p + 1)) return true;
-                }
-            }
-            vis[i][j] = false;
-            return false;
-        };
-
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (board[i][j] == word[0] && dfs(i, j, 0)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-};
 
 
 

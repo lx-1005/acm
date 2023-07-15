@@ -1,14 +1,3 @@
-/*******************************
-| Author:  JiuR
-| Problem: %$Problem$%
-| Contest: %$Contest$%
-| URL:     %$URL$%
-| When:    %$Time$%
-|
-| Memory:  %$MemoryL$% MB
-| Time:    %$TimeL$% ms
-*******************************/
-
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -25,9 +14,9 @@ using namespace std;
 #define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
 #define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
 #define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
-#define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
+#define complete_unique(a) a.erase(unique(begin(a), t(a)), t(a))
 #define mst(x, a) memset(x, a, sizeof(x))
-#define all(a) begin(a), end(a)
+#define all(a) begin(a), t(a)
 #define rall(a) rbegin(a), rend(a)
 #define bitcnt(x) __builtin_popcountll(x) // 返回x的二进制1的个数
 #define lowbit(x) ((x) & (-(x)))   // 返回x的最低位1表示的数
@@ -79,16 +68,57 @@ T quick_power(T x, T y, T mod) {
 }
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-//const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-//const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+int c, r, sx, sy;
+char g[155][155];
+int dis[155][155];
+int dx[8] = {-2, -2, 2, 2, -1, 1, -1, 1}, dy[8] = {-1, 1, -1, 1, -2, -2, 2, 2};
 
+bool check(int x1, int y1, int x2, int y2, int j) {
+    if (x2 < 0 || x2 >= r || y2 < 0 || y2 >= c || g[x2][y2] == '*' || dis[x2][y2] != -1) return false;
+    // if ((j < 4 && g[x1 + x2 >> 1][y1] == '*') || (j >= 4 && g[x1][y1 + y2 >> 1] == '*')) return false;
+    return true;
+}
 
+int bfs() {
+    mst(dis, -1);
+    dis[sx][sy] = 0;
+    vector<PII> q = {{sx, sy}};
+    while (q.size()) { 
+        vector<PII> tmp;
+        for (int i = 0; i < q.size(); ++i) {
+            auto [x, y] = q[i];
+            int step = dis[x][y];
+            for (int j = 0; j < 8; ++j) {
+                int nx = x + dx[j], ny = y + dy[j];
+                if (check(x, y, nx, ny, j)) {
+                    dis[nx][ny] = step + 1;
+                    tmp.emplace_back(nx, ny);
+                    if (g[nx][ny] == 'H') {
+                        return dis[nx][ny];
+                    }
+                } 
+            }
+        }
+        q = move(tmp);
+    }
+    return -1;
+}
 
 
 void solve() {
+    cin >> c >> r;
+    for (int i = 0; i < r; ++i) {
+        for (int j = 0; j < c; ++j) {
+            cin >> g[i][j];
+            if (g[i][j] == 'K') sx = i, sy = j;
+        }
+    }
 
+    cout << bfs() << endl;
 }
 
 
@@ -96,7 +126,7 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) solve();
 
     return 0;
