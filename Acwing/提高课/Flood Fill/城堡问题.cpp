@@ -95,42 +95,8 @@ int a[N][N];
 bool vis[N][N];
 
 void solve() {
-    int n, m;
-    cin >> m >> n;
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) {
-            cin >> a[i][j];
-        }
-    }
-
-    int ans = 0, mx = 0;
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) {
-            if (vis[i][j]) continue;
-            ++ans;
-            vis[i][j] = true;
-            int cnt = 1;
-            vector<vector<int>> q{{i, j, a[i][j]}};
-            while (q.size()) {
-                vector<vector<int>> tmp;
-                for (int k = 0; k < q.size(); ++k) {
-                    auto [x, y, w] = make_tuple(q[k][0], q[k][1], q[k][2]);
-                    for (int d = 0; d < 4; ++d) {
-                        int nx = x + dx[d], ny = y + dy[d];
-                        if (!(w >> d & 1) && nx >= 0 && nx < m && ny >= 0 && ny < n && !vis[nx][ny]) {
-                            vis[nx][ny] = true;
-                            ++cnt;
-                            tmp.PB({nx, ny, a[nx][ny]});
-                        }
-                    }
-                }
-                q = move(tmp);
-            }
-            mx = max(mx, cnt);
-        }
-    }
-    cout << ans << endl;
-    cout << mx << endl; 
+    vector<vector<int>> ans;
+    bel
 }
 
 
