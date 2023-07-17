@@ -73,7 +73,26 @@ const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
-
+class Solution {
+public:
+    int longestValidSubstring(string word, vector<string>& forbidden) {
+        unordered_set<string> us(all(forbidden));
+        int n = word.size(), ans = 0, l = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < min(i + 10, n); ++j) {
+                // [i, j]
+                if (us.count(word.substr(i, j - i + 1))) {
+                    ans = max(ans, j - l);
+                    l = j;
+                    i = j - 1;
+                } else {
+                    ans = max(ans, j - l + 1);
+                }
+            }
+        }
+        return ans;
+    }
+};
 
 
 void solve() {

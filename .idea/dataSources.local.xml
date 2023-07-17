@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="CL-231.8109.222">
+  <component name="dataSourceStorageLocal" created-in="CL-231.9161.40">
     <data-source name="九日的笔记本-ubuntu18.04-mysql5.7-slave" uuid="059f950a-b307-411c-a436-3130087eb773">
       <database-info product="MySQL" version="5.7.41-0ubuntu0.18.04.1" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="5.7.41" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>
