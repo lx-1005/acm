@@ -72,12 +72,7 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 
 
 
-class Solution {
-public:
-    int minimumBeautifulSubstrings(string s) {
 
-    }
-};
 
 
 void solve() {
