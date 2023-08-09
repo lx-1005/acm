@@ -64,37 +64,40 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-const int mod = 1e9 + 7;
 
-    int numberOfGoodSubarraySplits(vector<int>& nums) {
-        int n = nums.size(), s[n + 1];
-        s[0] = 0;
-        for (int i = 1; i <= n; ++i) s[i] = s[i - 1] + nums[i - 1];
-        
-        vector<int> f(n, -1);
-        function<int(int)> dfs = [&](int t) -> int { // 划分nums[0~t], 有几种划分方法?
-            if (t < 0) return 1;
-            debug(t, f);
-            int& ans = f[t];
-            if (ans != -1) return ans;
-            if (s[t+1] == 0) ans = 0;
-            else if (s[t+1] == 1) ans = 1;
-            else {
-                ans = 0;
-                for (int i = t; i >= 0; --i) {
-                    // [i, t]
-                    if (s[t+1]-s[i] > 1) break;
-                    if (s[t+1]-s[i]==1) ans = (ans + dfs(i - 1)) % mod;
-                }
+class Solution {
+public:
+    long long maxScore(vector<int>& nums, int x) {
+        int n = nums.size();
+        vector<int> odd, even;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] & 1) odd.push_back(i);
+            else even.push_back(i);
+        }
+
+        LL f[n];
+        mst(f, 0);
+        function<LL(int)> dfs = [&](int i) -> LL { // 从i走到末尾,可以获得最大分数
+            if (i == n) return 0;
+
+            if (f[i]) return f[i];
+            if (nums[i] & 1) {
+                int t1 = upper_bound(all(odd), i) - odd.begin();
+                int t2 = upper_bound(all(even), i) - even.begin();
+                f[i] = max({f[i], nums[i] + dfs(t1), -x + dfs(t2)});
+            } else {
+                int t1 = upper_bound(all(even), i) - even.begin();
+                int t2 = upper_bound(all(odd), i) - odd.begin();
+                f[i] = max({f[i], nums[i] + dfs(t1), -x + dfs(t2)});
             }
-            return ans % mod;
+            return f[i];
         };
-        return dfs(n - 1);
+        return dfs(0);
     }
+};
+
 
 void solve() {
-        VI nums = read<VI>(5);
-    numberOfGoodSubarraySplits(nums);
 
 
 }
@@ -111,10 +114,10 @@ int main() {
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-    
+
     int t = 1;
 //    cin >> t;
     while (t--) solve();
-    
+
     return 0;
 }

@@ -1,13 +1,9 @@
-#include <unordered_map>
-#pragma GCC optimize("O2")
-#pragma GCC optimize("O3")
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC target("avx,avx2,fma")
-
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
+#ifdef LOCAL
+#include "dbg.hpp"
+#endif
 using namespace __gnu_pbds; //required
 using namespace std;
 
@@ -18,9 +14,9 @@ using namespace std;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
-#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -30,24 +26,24 @@ using namespace std;
 #define bitcnt_tailzero(x) (__builtin_ctz(x))   // 返回x的二进制末尾0的数量，例如16(10000)末尾有4个0
 #define SZ(x) (int)(x.size())
 #define shuffle(a) random_shuffle(all(a)) // 随机打乱a
+#define endl '\n'
+#define fi first
+#define se second
 #define yn(ans) printf("%s\n", (ans)?"Yes":"No");
 #define YN(ans) printf("%s\n", (ans)?"YES":"NO");
 
 using LL = long long;
 using ULL = unsigned long long;
 using DB = double;
-
+using VLL = std::vector<LL>;
 using VI = std::vector<int>;
 using VVI = std::vector<VI>;
-using VLL = std::vector<LL>;
-using VVLL = std::vector<VLL>;
 using VB = std::vector<bool>;
 using VVB = std::vector<std::vector<bool>>;
 using PII = std::pair<int, int>;
 using PLL = std::pair<LL, LL>;
-using PCI = std::pair<char, int>;
+using PCI = pair<char, int>;
 using TIII = std::tuple<int, int, int>;
-using VPII = std::vector<PII>;
 
 // 支持下标访问的ordered_set/ordered_multiset
 // 使用:
@@ -59,26 +55,18 @@ template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, 
 template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
 template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
 template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
-template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
+template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
-#ifdef DEBUG
-#include "dbg.hpp"
-#endif
-// **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-//const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-//const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
-
-
-
+const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 
 
 void solve() {
 
-}
 
+}
 
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
@@ -89,7 +77,7 @@ int main() {
 #ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
-    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    ios::sync_with_stdio(false); cin.tie(nullptr);
 
     int t = 1;
 //    cin >> t;

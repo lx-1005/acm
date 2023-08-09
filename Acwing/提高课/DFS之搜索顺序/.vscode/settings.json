@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.pl": "",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp"
+    }
+}
