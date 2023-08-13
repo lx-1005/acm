@@ -16,11 +16,10 @@
       <paths name="九日主机-虚拟机-ubuntu20.04 (b35c145c-519c-4b0b-b8bd-f3aef977d240)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/acm" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/lx/coder/acm" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/build/debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/build/debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/build/" />
           </excludedPaths>
         </serverdata>
       </paths>
