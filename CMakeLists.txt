@@ -17,6 +17,7 @@ add_executable(3 Leetcode/3.cpp dbg.hpp)
 add_executable(4 Leetcode/4.cpp dbg.hpp)
 
 
+
 #add_executable(cf_a Codeforces/a.cpp dbg.hpp)
 #add_executable(cf_b Codeforces/b.cpp dbg.hpp)
 #add_executable(cf_c Codeforces/c.cpp dbg.hpp)
