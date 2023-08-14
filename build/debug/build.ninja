@@ -50,7 +50,7 @@ cmake_ninja_workdir = F$:/coder/acm/build/debug/
 build cmake_object_order_depends_target_main: phony || CMakeFiles/main.dir
 
 build CMakeFiles/main.dir/main.cpp.obj: CXX_COMPILER__main_unscanned_Debug F$:/coder/acm/main.cpp || cmake_object_order_depends_target_main
-  DEFINES = -DDEBUG -DLOCAL
+  DEFINES = -DDEBUG
   DEP_FILE = CMakeFiles\main.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -fcoroutines
   OBJECT_DIR = CMakeFiles\main.dir
@@ -85,7 +85,7 @@ build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.o
 build cmake_object_order_depends_target_1: phony || CMakeFiles/1.dir
 
 build CMakeFiles/1.dir/Leetcode/1.cpp.obj: CXX_COMPILER__1_unscanned_Debug F$:/coder/acm/Leetcode/1.cpp || cmake_object_order_depends_target_1
-  DEFINES = -DDEBUG -DLOCAL
+  DEFINES = -DDEBUG
   DEP_FILE = CMakeFiles\1.dir\Leetcode\1.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -fcoroutines
   OBJECT_DIR = CMakeFiles\1.dir
@@ -120,7 +120,7 @@ build 1.exe: CXX_EXECUTABLE_LINKER__1_Debug CMakeFiles/1.dir/Leetcode/1.cpp.obj
 build cmake_object_order_depends_target_2: phony || CMakeFiles/2.dir
 
 build CMakeFiles/2.dir/Leetcode/2.cpp.obj: CXX_COMPILER__2_unscanned_Debug F$:/coder/acm/Leetcode/2.cpp || cmake_object_order_depends_target_2
-  DEFINES = -DDEBUG -DLOCAL
+  DEFINES = -DDEBUG
   DEP_FILE = CMakeFiles\2.dir\Leetcode\2.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -fcoroutines
   OBJECT_DIR = CMakeFiles\2.dir
@@ -155,7 +155,7 @@ build 2.exe: CXX_EXECUTABLE_LINKER__2_Debug CMakeFiles/2.dir/Leetcode/2.cpp.obj
 build cmake_object_order_depends_target_3: phony || CMakeFiles/3.dir
 
 build CMakeFiles/3.dir/Leetcode/3.cpp.obj: CXX_COMPILER__3_unscanned_Debug F$:/coder/acm/Leetcode/3.cpp || cmake_object_order_depends_target_3
-  DEFINES = -DDEBUG -DLOCAL
+  DEFINES = -DDEBUG
   DEP_FILE = CMakeFiles\3.dir\Leetcode\3.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -fcoroutines
   OBJECT_DIR = CMakeFiles\3.dir
@@ -190,7 +190,7 @@ build 3.exe: CXX_EXECUTABLE_LINKER__3_Debug CMakeFiles/3.dir/Leetcode/3.cpp.obj
 build cmake_object_order_depends_target_4: phony || CMakeFiles/4.dir
 
 build CMakeFiles/4.dir/Leetcode/4.cpp.obj: CXX_COMPILER__4_unscanned_Debug F$:/coder/acm/Leetcode/4.cpp || cmake_object_order_depends_target_4
-  DEFINES = -DDEBUG -DLOCAL
+  DEFINES = -DDEBUG
   DEP_FILE = CMakeFiles\4.dir\Leetcode\4.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -fcoroutines
   OBJECT_DIR = CMakeFiles\4.dir

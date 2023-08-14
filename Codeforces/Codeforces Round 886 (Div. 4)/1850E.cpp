@@ -11,9 +11,9 @@ using namespace std;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
-#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -47,6 +47,7 @@ using TIII = std::tuple<int, int, int>;
 //      ordered_set<int> s; 或 ordered_multiset<int> s;
 //      s.find_by_order(下标); // 返回s[下标]的迭代器
 //      s.order_of_key(x); // 返回s中严格<x的元素个数
+void INIT() { INIT; ios::sync_with_stdio(false); cin.tie(nullptr); cout << fixed << setprecision(20); }
 template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
@@ -55,42 +56,48 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
-class Solution {
-public:
-    int minAbsoluteDifference(vector<int>& nums, int x) {
-        int n = nums.size(), ans = inf;
-        set<int> st; // 存前面这个数
-        for (int i = x; i < n; ++i) { // 枚举后面这个数
-            st.insert(nums[i - x]);
-            // 从nums[0~i-x]中，找离nums[i]最近的数*it
-            auto it = st.lower_bound(nums[i]);
-            ans = min({ans, abs(nums[i] - *it), abs(nums[i] - (*--it))});
-        }
-        return ans;
-    }
-};
+// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+
+/*
+
+方法1：求根公式
+    c=∑[1,n] ((2w+a[i])^2)
+    转换得到关于w的二元一次方程，用求根公式求w即可
+    4nw^2+4sum*w+p-c=0
+
+方法2：二分
+
+
+*/
+
+const int N = 200010;
+LL n, c, s[N];
 
 void solve() {
-
-
+    cin >> n >> c;
+    LL sum = 0, p = 0;
+    for (int i = 1; i <= n; ++i) {
+        cin >> s[i]; 
+        sum += s[i];
+        p += s[i] * s[i];
+    }   
+    
+    LL lo = 0, hi = 1e9;
+    while (lo + 1 < hi) {
+        LL mid = lo + hi >> 1;
+        if ((__int128)4 * n * mid * mid + (__int128)p + 4 * mid * sum - c >= 0) hi = mid;
+        else lo = mid;
+    }
+    cout << hi << endl;
 }
 
-
-#define INPUT_FILE "F:/coder/acm/input.txt"
-#define OUTPUT_FILE "F:/coder/acm/output.txt"
-#define ERROR_FILE "F:/coder/acm/error.txt"
-
 int main() {
-#ifdef LOCAL
-    freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
-#endif
-//    ios::sync_with_stdio(false); cin.tie(nullptr);
-
+    INIT;
     int t = 1;
-//    cin >> t;
+    cin >> t;
     while (t--) solve();
 
     return 0;
