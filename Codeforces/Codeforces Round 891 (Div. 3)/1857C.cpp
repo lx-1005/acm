@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
-#include <unordered_map>
-#include <unordered_set>
 using namespace __gnu_pbds; //required
 using namespace std;
 
@@ -62,38 +60,28 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
-/*
-
-
-记录所有青蛙的步长（忽略步长>n的青蛙）
-O(nlogn)模拟青蛙跳的过程，无需逐只枚举，步长一样的青蛙跳的路径也一样，可以一起枚举
-
-*/
-
-const int N = 200010;
 
 void solve() {
-    int n; cin >> n;
-    vector<int> cnt(n + 1); // cnt[i]: 步长为i的青蛙个数
-    for (int i = 1; i <= n; ++i) {
-        int x; cin >> x;
-        if (x <= n) cnt[x]++; // 步长>n的忽略，一定无法抓到它们
-    }
+    int n;
+    cin >> n;
+    LL m = n * (n - 1) / 2;
+    vector<LL> b(m);
+    for (int i = 0; i < m; ++i) cin >> b[i];
+    sort(all(b));
 
-    vector<int> mx(n + 1); // mx[i]: 多少只青蛙会跳到此处
-    for (int i = 1; i <= n; ++i) { // 枚举步长为i的青蛙跳的过程，i->i*2->i*3->...
-        for (int j = i; j <= n; j += i) {
-            mx[j] += cnt[i];
-        }
+    for (int i = 0, j = n - 1; i < m; ) {
+        cout << b[i] << ' ';
+        i += j;
+        j -= 1;
     }
-    cout << *max_element(all(mx)) << endl;
+    cout << b.back() << endl;
 }
-
-
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-    int t; cin >> t;
+
+    int t = 1;
+    cin >> t;
     while (t--) solve();
 
     return 0;

@@ -58,63 +58,81 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
-<<<<<<<< HEAD:nowcoder/63039/括号序列操作专家.cpp
 
-/*
-
-))()())(()()()((())(
-
-
-========
->>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/A_Chord.cpp
-
-
-*/
-            
 
 
 void solve() {
-<<<<<<<< HEAD:nowcoder/63039/括号序列操作专家.cpp
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-    int l = 0, r = 0;
-    for (char c : s) {
-        l += c == '(';
-        r += c == ')';
-    }
-    if (l != r) cout << -1 << endl;
-    else {
-        int ans = 0;
-        vector<int> cnt(n + 1);
-        for (int i = 0; i < n; ++i) {
-            cnt[i + 1] = cnt[i] + (s[i] == '(' ? 1 : -1);
-            if (cnt[i + 1] < 0) ++ans;
+    vector<LL> a(n + 1), b(n + 1);
+    for (int i = 1; i <= n; ++i) cin >> a[i];
+    for (int i = 1; i <= n; ++i) cin >> b[i];
+
+    vector<vector<int>> g(n + 1);
+    for (int i = 1; i <= n; ++i) {
+        for (int j = i + 1; j <= n; ++j) {
+            if (a[i] - a[j] >= b[i] - b[j]) {
+                // i -> j
+                g[i].push_back(j);
+            } 
+            if (a[i] - a[j] <= b[i] - b[j]) {
+                // j -> i
+                g[j].push_back(i);
+            }
         }
-        cout << ans << endl;
-    }
-========
-    string s;
-    cin >> s;
-    if (s == "ACE" || s == "BDF" || s == "CEG" || s == "DFA" || s == "EGB" || s  == "FAC" || s == "GBD") {
-        cout << "Yes\n";
-    } else {
-        cout << "No\n";
     }
 
->>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/A_Chord.cpp
+    vector<int> ans;
+    vector<bool> st(n + 1);
+
+    function<void(int)> dfs = [&](int x) {
+        for (int t : g[x]) {
+            if (a[t] - a[x] == b[t] - b[x] && !st[t]) {
+                st[t] = true;
+                ans.push_back(t);
+                dfs(t);
+            }
+        }
+    };
+
+    for (int i = 1; i <= n; ++i) {
+        if (st[i]) continue;
+        set<int> vist;
+        vist.insert(i);
+        queue<int> q;
+        q.push(i);
+        while (q.size()) {
+            int sz = q.size();
+            for (int i = 0; i < sz; ++i) {
+                auto s = q.front();
+                q.pop();    
+                for (int t : g[s]) {
+                    if (vist.count(t)) continue;
+                    vist.insert(t);
+                    q.push(t);
+                }
+            } 
+        }
+        if (vist.size() == n) {
+            ans.push_back(i);
+            st[i] = true;
+            dfs(i);
+        }
+    }
+    std::cout << ans.size() << endl;
+    if (ans.size()) {
+        for (int x : ans) {
+            std::cout << x << ' ';
+        }
+        std::cout << endl;
+    }
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
-<<<<<<<< HEAD:nowcoder/63039/括号序列操作专家.cpp
     cin >> t;
-========
-    // cin >> t;
->>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/A_Chord.cpp
     while (t--) solve();
 
     return 0;

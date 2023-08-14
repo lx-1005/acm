@@ -62,6 +62,7 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
+<<<<<<<< HEAD:Codeforces/Codeforces Round 886 (Div. 4)/1850C.cpp
 /*
 
 记录单词的最上面那个字母的位置[row][col]
@@ -82,6 +83,34 @@ void solve() {
 
     for (int i = row; i < 8 && isalpha(g[i][col]); ++i) cout << g[i][col];
     cout << endl;
+========
+
+/*
+
+将所有奇数看做一组，偶数看做一组，只能组内交换
+若sort前后，所有位置的数字的奇偶性不变，说明可以通过交换得到
+
+*/
+
+const int N = 200010;
+int n, a[N], b[N];
+
+void solve() {
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+        b[i] = a[i];
+    }
+
+    sort(b, b + n);
+    for (int i = 0; i < n; ++i) {
+        if (a[i] % 2 != b[i] % 2) {
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Codeforces/Codeforces Round 888 (Div. 3)/1851B.cpp
 }
 
 int main() {

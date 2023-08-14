@@ -55,6 +55,7 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
+<<<<<<<< HEAD:Codeforces/Codeforces Round 886 (Div. 4)/1850D.cpp
 const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
@@ -66,6 +67,11 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 排序
 如果一个连续子数组的相邻元素差<=k, 称其为合法子数组，那么，必须删除若干元素，剩下最长合法子数组
 那么删除元素数目=n-最长合法子数组长度
+========
+// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/C_Invisible_Hand.cpp
 
 */
 
@@ -73,6 +79,7 @@ const int N = 200010;
 int n, k, a[N];
 
 void solve() {
+<<<<<<<< HEAD:Codeforces/Codeforces Round 886 (Div. 4)/1850D.cpp
     cin >> n >> k;
     for (int i = 1; i <= n; ++i) cin >> a[i];
     sort(a + 1, a + n + 1);
@@ -83,13 +90,41 @@ void solve() {
         ans = max(ans, cur);
     }
     cout << n - ans << endl;
+========
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n), b(m);
+    for (int i = 0; i < n; ++i) cin >> a[i];
+    for (int i = 0; i < m; ++i) cin >> b[i];
+    sort(all(a));
+    sort(all(b));
+
+    // 可以用X日元卖出一个苹果的人数大于或等于可以用X日元买入一个苹果的人数吗？
+    function<bool(LL)> check = [&](LL x) -> bool { 
+        int acnt = upper_bound(all(a), x) - a.begin();
+        int bcnt = b.end() - lower_bound(all(b), x);    
+        return acnt >= bcnt; 
+    };
+
+    LL lo = -1, hi = 1e9 + 10;
+    while (lo + 1 < hi) {
+        LL mid = (lo + hi) / 2;
+        if (check(mid)) hi = mid;
+        else lo = mid;
+    }
+    cout << hi << endl;
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/C_Invisible_Hand.cpp
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
+<<<<<<<< HEAD:Codeforces/Codeforces Round 886 (Div. 4)/1850D.cpp
     cin >> t;
+========
+    // cin >> t;
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Atcoder/ABC 312/C_Invisible_Hand.cpp
     while (t--) solve();
 
     return 0;

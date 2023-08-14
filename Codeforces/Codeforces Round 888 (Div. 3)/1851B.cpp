@@ -60,6 +60,7 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+<<<<<<<< HEAD:Codeforces/Codeforces Round 888 (Div. 3)/1851B.cpp
 
 
 
@@ -67,6 +68,12 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 
 将所有奇数看做一组，偶数看做一组，只能组内交换
 若sort前后，所有位置的数字的奇偶性不变，说明可以通过交换得到
+========
+
+/*
+
+两个人的身高差是k的[1, m-1]倍
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Codeforces/Codeforces Round 888 (Div. 3)/1851A.cpp
 
 */
 
@@ -74,11 +81,24 @@ const int N = 200010;
 int n, a[N], b[N];
 
 void solve() {
+<<<<<<<< HEAD:Codeforces/Codeforces Round 888 (Div. 3)/1851B.cpp
     cin >> n;
     for (int i = 0; i < n; ++i) {
         cin >> a[i];
         b[i] = a[i];
     }
+========
+    int n, m, k, H;
+    cin >> n >> m >> k >> H;
+    int ans = 0;
+    for (int i = 0; i < n; ++i) {
+        int h;
+        cin >> h;
+        if ((h - H) % k == 0 && abs(h - H) / k >= 1 && abs(h - H) / k < m) ++ans;
+        
+    }
+    cout << ans << endl;
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Codeforces/Codeforces Round 888 (Div. 3)/1851A.cpp
 
     sort(b, b + n);
     for (int i = 0; i < n; ++i) {

@@ -77,8 +77,13 @@ int solve() {
         if (a > b) ++ans; 
     }
     return ans;
+<<<<<<< HEAD
 
 }
+=======
+}
+
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 

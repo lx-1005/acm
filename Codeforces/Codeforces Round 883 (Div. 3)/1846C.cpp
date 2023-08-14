@@ -59,6 +59,7 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 // const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 // const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+<<<<<<<< HEAD:Codeforces/Codeforces Round 883 (Div. 3)/1846C.cpp
 /*
 
 任务解决的顺序：从短到长
@@ -95,6 +96,41 @@ int solve() {
         if (score[i] == z) return i + 1;
     }
     return -1;
+========
+
+
+void solve() {
+    int n, q;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> a[i];
+    }
+    sort(all(a));
+
+    cin >> q;
+    for (int t = 0; t < q; ++t) {
+        LL x, y;
+        cin >> x >> y;
+
+        LL ans = 0;
+        for (int i = 0; i < n; ++i) {
+            if (y % a[i] || y - a[i] < a[0] || y - a[i] > a[n - 1]) {
+                continue;
+            }
+            int l = lower_bound(a.begin() + i + 1, a.end(), x - a[i]) - a.begin();
+            int r = upper_bound(a.begin() + i + 1, a.end(), x - a[i]) - a.begin();
+            if (l < r) {
+                // [l, r)
+                int ll = lower_bound(a.begin() + l, a.begin() + r, y / a[i]) - a.begin();
+                int rr = upper_bound(a.begin() + l, a.begin() + r, y / a[i]) - a.begin();
+                if (ll < rr) ans += rr - ll;
+            }
+        }
+        cout << ans << ' ';
+    }
+    cout << endl;
+>>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed:Codeforces/Codeforces Round 891 (Div. 3)/1857F.cpp
 }
 
 int main() {

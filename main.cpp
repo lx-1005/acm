@@ -1,10 +1,17 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
+<<<<<<< HEAD
 #include <ext/pb_ds/tree_policy.hpp>
 #ifdef LOCAL
 #include "dbg.hpp"
 #endif
 using namespace __gnu_pbds;  // required
+=======
+#ifdef LOCAL
+#include "dbg.hpp"
+#endif
+using namespace __gnu_pbds; //required
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 using namespace std;
 
 #define PB push_back
@@ -14,9 +21,15 @@ using namespace std;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
+<<<<<<< HEAD
 #define rep(i, a, b) for (int i = (a); i < (int)(b); ++i)
 #define REP(i, a, b) for (int i = (a); i <= (int)(b); ++i)
 #define per(i, a, b) for (int i = (a); i >= (int)(b); --i)
+=======
+#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -26,12 +39,21 @@ using namespace std;
 #define bitcnt_tailzero(x) \
   (__builtin_ctz(x))  // 返回x的二进制末尾0的数量，例如16(10000)末尾有4个0
 #define SZ(x) (int)(x.size())
+<<<<<<< HEAD
 #define shuffle(a) random_shuffle(all(a))  // 随机打乱a
 #define endl '\n'
 #define fi first
 #define se second
 #define yn(ans) printf("%s\n", (ans) ? "Yes" : "No");
 #define YN(ans) printf("%s\n", (ans) ? "YES" : "NO");
+=======
+#define shuffle(a) random_shuffle(all(a)) // 随机打乱a
+#define endl '\n'
+#define fi first
+#define se second
+#define yn(ans) printf("%s\n", (ans)?"Yes":"No");
+#define YN(ans) printf("%s\n", (ans)?"YES":"NO");
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 
 using LL = long long;
 using ULL = unsigned long long;
@@ -51,6 +73,7 @@ using TIII = std::tuple<int, int, int>;
 //      ordered_set<int> s; 或 ordered_multiset<int> s;
 //      s.find_by_order(下标); // 返回s[下标]的迭代器
 //      s.order_of_key(x); // 返回s中严格<x的元素个数
+<<<<<<< HEAD
 template <typename T>
 using ordered_set =
     tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
@@ -76,6 +99,25 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;  // 10亿, 20亿
 const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1},
           dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+=======
+template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
+template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
+template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
+template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
+
+const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
+const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+
+
+
+void solve() {
+
+
+}
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 
 class Solution {
  public:
@@ -146,8 +188,12 @@ int main() {
   freopen(OUTPUT_FILE, "w", stdout);
   freopen(ERROR_FILE, "w", stderr);
 #endif
+<<<<<<< HEAD
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
+=======
+    ios::sync_with_stdio(false); cin.tie(nullptr);
+>>>>>>> aefcd8977029efd2afd337fff036f1b4033e91ed
 
   int t = 1;
   //    cin >> t;
