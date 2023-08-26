@@ -14,8 +14,7 @@ private:
 
     TreeNode* leftRotate(TreeNode* root){ // 左旋
         if (!root || !root->right) return root;
-        auto R = root->right;
-        auto RL = root->right->left;
+        auto R = root->right, RL = root->right->left;
         root->right = RL;
         R->left = root;
         return R;

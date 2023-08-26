@@ -18,41 +18,37 @@ public:
         if (--(*_pcount) == 0) {
             delete _ptr;
             delete _pcount;
+            _ptr = _pcount = nullptr;
         }
     }
 
     SharedPtr(const SharedPtr& s) : _ptr(s._ptr), _pcount(s._pcount) { // copy ctor
         (*_pcount)++;
-    } 
+    }
 
     SharedPtr& operator=(const SharedPtr<T>& s) { // copy assign: 左减右加
         if (this != &s) {// 检测自赋值
             if (--(*_pcount) == 0) {
                 delete _ptr;
                 delete _pcount;
-                return *this;
             }
             _ptr = s._ptr;
             _pcount = s._pcount;
             (*_pcount)++;
         }
-    
+
         return *this;
     }
 
     T& operator*() const {
-        assert(_ptr != nullptr);
-        
         return *_ptr;
     }
 
     T* operator->() const {
-        assert(_ptr != nullptr);
- 
         return _ptr;
     }
 
-    size_t use_count(){ 
+    size_t use_count(){
         return *_pcount;
     }
 };
@@ -74,13 +70,13 @@ int main() {
     sp2 = sp3;
     cout << "*sp1=" << *sp1 << ' ' << "sp1计数=" << sp1.use_count() << endl;
     cout << "*sp2=" << *sp2 << ' ' << "sp2计数=" << sp2.use_count() << endl;
-    cout << "*sp3=" << *sp3 << ' ' << "sp3计数=" << sp3.use_count() << endl;  
+    cout << "*sp3=" << *sp3 << ' ' << "sp3计数=" << sp3.use_count() << endl;
 
 	return 0;
 }
 
 
-// 循环引用实例: 
+// 循环引用实例:
 // #include <iostream>
 // #include <memory>
 
@@ -88,7 +84,7 @@ int main() {
 
 // template <typename T>
 // class Node {
-// public: 
+// public:
 //     shared_ptr<Node<T>> _pPre, _pNext;
 //     T _value;
 
@@ -137,7 +133,7 @@ int main() {
 
 // template <typename T>
 // class Node {
-// public: 
+// public:
 //     shared_ptr<Node<T>> _pPre;
 //     weak_ptr<Node<T>> _pNext; // 把其中一个换成weak_ptr即可破局
 //     T _value;
@@ -182,5 +178,3 @@ int main() {
 
 /* 实现2
  * /
-
- 
