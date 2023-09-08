@@ -63,6 +63,25 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 
+class Solution {
+public:
+    int countSymmetricIntegers(int low, int high) {
+        int ans = 0;
+        for (int i = low; i <= high; ++i) {
+            string s = to_string(i);
+            int m = s.size();
+            if (m % 2 == 0) {
+                int sum = 0;
+                for (int j = 0; j < m; ++j) {
+                    sum += (s[j] - '0') - (s[m - 1 - j] - '0');
+                }
+                ans += !sum;
+            }
+        }
+        return ans;
+    }
+};
+
 
 
 

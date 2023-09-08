@@ -11,9 +11,9 @@ using namespace std;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
-#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -55,33 +55,58 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+int n;
 
-
-
-
-
-
-void solve() {
-    int x;
-    cin >> x;
-    cout << log(x) / log(2) << endl;
-
-
+vector<int> reverse(vector<int>& p, int l, int r) {
+    vector<int> res;
+    int n = p.size();
+    for (int i = r + 1; i < n; ++i) res.push_back(p[i]);
+    for (int i = r; i >= l; --i) res.push_back(p[i]);
+    for (int i = 0; i < l; ++i) res.push_back(p[i]);
+    return res;
 }
 
+bool cmp(vector<int>& a, vector<int>& b) {
+    if (b.empty()) return true;
+    for (int i = 0; i < a.size(); ++i) {
+        if (a[i] != b[i]) {
+            return a[i] > b[i];
+        }
+    }
+    return true;
+}
 
-#define INPUT_FILE "F:/coder/acm/input.txt"
-#define OUTPUT_FILE "F:/coder/acm/output.txt"
-#define ERROR_FILE "F:/coder/acm/error.txt"
+void solve() {
+    cin >> n;
+    vector<int> p(n), idx(n + 1);
+    for (int i = 0; i < n; ++i) {
+        cin >> p[i];
+        idx[p[i]] = i;
+    }
+    
+    vector<int> ans;
+    int u = idx[n] == 0 ? idx[n - 1] : idx[n];
+    vector<PII> s = {{u - 2, u - 1}, {u, u}, {u - 1, u}, {u - 1, u - 1}, {u, u + 1}, {0, u - 1}};
+    for (auto [l, r] : s) {
+        if (l >= 0 && r < n) {
+            auto res = reverse(p, l, r);
+            if (cmp(res, ans)) {
+                ans = res;
+            }
+        }
+    }
+    for (int x : ans) {
+        cout << x << ' ';
+    }
+    cout << endl;
+}
 
 int main() {
-#ifdef LOCAL
-    freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
-#endif
-    ios::sync_with_stdio(false); cin.tie(nullptr);
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
     cin >> t;

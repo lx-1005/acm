@@ -64,31 +64,13 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-class Solution {
-public:
-    string sortVowels(string s) {
-        int n = s.size();
-        unordered_set<char> us = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
-        string t(n, '#');
-        string tmp;
-        for (int i = 0; i < n; ++i) {
-            if (!us.count(s[i])) t[i] = s[i];
-            else tmp.push_back(s[i]);
-        }
-        int j = 0;
-        for (int i = 0; i < n; ++i) {
-            if (t[i] == '#') {
-                t[i] = tmp[j++];
-            }
-        }
-        return t;
-    }
-};
+
 
 
 void solve() {
 
-
+    string s;
+    s.find('0');
 
 }
 

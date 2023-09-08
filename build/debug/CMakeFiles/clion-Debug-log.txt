@@ -1,4 +1,4 @@
 "D:\jetbrains toolbox\toolbox\apps\CLion\ch-0\232.8660.186\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/jetbrains toolbox/toolbox/apps/CLion/ch-0/232.8660.186/bin/ninja/win/x64/ninja.exe" -G Ninja -S F:\coder\acm -B F:\coder\acm\build\debug
--- Configuring done (0.2s)
+-- Configuring done (0.1s)
 -- Generating done (0.0s)
 -- Build files have been written to: F:/coder/acm/build/debug

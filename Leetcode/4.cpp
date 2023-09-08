@@ -3,7 +3,6 @@
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds; //required
 using namespace std;
-using std::move;
 
 #define PB push_back
 #define EB emplace_back
@@ -12,9 +11,9 @@ using std::move;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
-#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -53,25 +52,95 @@ template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, 
 template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
 template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
 template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
-template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1)	res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
+template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
-#ifdef DEBUG
-#include "../dbg.hpp"
-#endif
-// **************************************************************
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-//const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 
-void solve() {
+vector<vector<int>> pa; // pa[x][i]: 节点x的第2^i个祖先
+map<int, int> depth; // <节点，深度>
 
+// 节点编号为0~n-1，树以edges的方式给出，求p和q的最近公共祖先
+int (int n, vector<vector<int>>& edges, int p, int q) {
+    vector<vector<int>> g(n);
+    for (auto& edge : edges) {
+        int x = edge[0], y = edge[1];
+        g[x].push_back(y);
+        g[y].push_back(x);
+
+    }
+
+    int m = log(n) / log(2) + 1;
+    pa.resize(n, vector<int>(m, - 1));
+    function<void(int, int)> dfs = [&](int x, int fa) { // x的父亲是fa
+        pa[x][0] = fa;
+        if (fa != -1) depth[x] = depth[fa] + 1;
+
+        for (int y : g[x]) {
+            if (y != fa) { // 遍历x的儿子y
+                dfs(y, x);
+            }
+        }
+    };
+    dfs(0, -1); // 0是根节点
+
+    for (int i = 1; i < m; ++i) {
+        for (int x = 0; x < n; ++x) {
+            if (int p = pa[x][i - 1]; p != -1) {
+                pa[x][i] = pa[p][i - 1];
+            }
+        }
+    }
+
+    int dp = depth[p], dq = depth[q];
+    if (dp < dq) dq = pa[q][]
+
+    for (int i = m; i >= 0; --i) {
+
+    }
 
 
 }
 
+int get_kth_ancestor(int node, int k) { // 返回node节点的第k个祖先
+    for (; k && (node != -1); k &= k - 1) {
+        node = pa[node][lowbit(k)];
+    }
+    return node;
+}
 
+// 返回 x 和 y 的最近公共祖先（节点编号从 0 开始）
+int get_lca(int x, int y) {
+    if (depth[x] > depth[y]) swap(x, y);
+
+    // 使 y 和 x 在同一深度
+    y = get_kth_ancestor(y, depth[y] - depth[x]);
+    if (y == x) return x;
+
+    // 尽量大步跨
+    // [
+    for (int i = pa[x].size() - 1; i >= 0; i--) {
+        int px = pa[x][i], py = pa[y][i];
+        if (px != py) {
+            x = px;
+            y = py;
+        }
+    }
+    return pa[x][0];
+}
+
+
+
+
+void solve() {
+    int x;
+    cin >> x;
+    cout << log(x) / log(2) << endl;
+
+
+}
 
 
 #define INPUT_FILE "F:/coder/acm/input.txt"
@@ -82,11 +151,11 @@ int main() {
 #ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
 #endif
-    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-    
+    ios::sync_with_stdio(false); cin.tie(nullptr);
+
     int t = 1;
-//    cin >> t;
+    cin >> t;
     while (t--) solve();
-    
+
     return 0;
 }

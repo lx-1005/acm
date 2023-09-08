@@ -11,9 +11,9 @@ using namespace std;
 #define UB upper_bound
 #define MP make_pair
 #define MT make_tuple
-#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
+#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
 #define all(a) begin(a), end(a)
@@ -55,33 +55,34 @@ template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的
 template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
-
-
-
-
+// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << log(x) / log(2) << endl;
+    int n;
+    cin >> n;   
+    LL ans = 0;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= n; ++j) {
+            LL mx = i * j;
+            set<int> st;
+            for (int k = 1; k <= n; ++k) st.insert(k);
+            st.erase(i);
+
+            
+
+
+        }
+    }
 
 
 }
 
-
-#define INPUT_FILE "F:/coder/acm/input.txt"
-#define OUTPUT_FILE "F:/coder/acm/output.txt"
-#define ERROR_FILE "F:/coder/acm/error.txt"
-
 int main() {
-#ifdef LOCAL
-    freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
-#endif
-    ios::sync_with_stdio(false); cin.tie(nullptr);
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int t = 1;
     cin >> t;

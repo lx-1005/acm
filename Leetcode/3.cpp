@@ -65,37 +65,42 @@ const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
 //const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
 
 
+/*
+
+1. 转换
+如果nums[i]%m==k，将nums[i]看做1，否则看做0
+那么cnt就是子数组的元素和
+
+2. 前缀和
+cnt=nums[l]+...+nums[r] = s[r+1]-s[l]
+
+3. 取模
+cnt%m==k -> (s[r+1]-s[l])%m==k -> s[r+1]%m-s[l]%m==k -> s[l]%m=s[r+1]%m-k%m
+-> s[l]%m=(s[r+1]-k)%m -> 等式右侧可能<0，因此s[l]%m=(s[r+1]-k+m)%m
+
+因此，以nums[r]结尾的趣味子数组个数=(s[r+1]-k+m)%m
+
+
+*/
+
+using LL = long long;
+
 class Solution {
 public:
-    long long maxScore(vector<int>& nums, int x) {
+    long long countInterestingSubarrays(vector<int>& nums, int modulo, int k) {
         int n = nums.size();
-        vector<int> odd, even;
+        vector<int> s(n + 1); // 将nums[i]转化为0或1后的前缀和
+        LL ans = 0;
+        map<LL, int> mp; // <前缀和%modulo, 出现的次数>
+        mp[0] = 1;
         for (int i = 0; i < n; ++i) {
-            if (nums[i] & 1) odd.push_back(i);
-            else even.push_back(i);
+            ans += mp[(s[i + 1] - k + modulo) % modulo];
+            s[i + 1] = s[i] + (nums[i] % modulo == k);
+            mp[s[i + 1] % modulo]++;
         }
-
-        LL f[n];
-        mst(f, 0);
-        function<LL(int)> dfs = [&](int i) -> LL { // 从i走到末尾,可以获得最大分数
-            if (i == n) return 0;
-
-            if (f[i]) return f[i];
-            if (nums[i] & 1) {
-                int t1 = upper_bound(all(odd), i) - odd.begin();
-                int t2 = upper_bound(all(even), i) - even.begin();
-                f[i] = max({f[i], nums[i] + dfs(t1), -x + dfs(t2)});
-            } else {
-                int t1 = upper_bound(all(even), i) - even.begin();
-                int t2 = upper_bound(all(odd), i) - odd.begin();
-                f[i] = max({f[i], nums[i] + dfs(t1), -x + dfs(t2)});
-            }
-            return f[i];
-        };
-        return dfs(0);
+        return ans;
     }
 };
-
 
 void solve() {
 
