@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// 预处理O(nlogn)，O(nlogn)
+// 每次询问get_lca是O(logn)
+
 class LCA {
 private:
     vector<vector<int>> pa; // pa[x][i]: 节点x的第2^i个祖先
