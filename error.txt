@@ -1,0 +1,10 @@
+[more, zero]: {(4, 2), (2, 4)} {6, 5, 3, 0}
+[from, p, mn]: 4 8 2
+[more, zero]: {(2, 4)} {5, 3, 0}
+[from, p, mn]: 4 6 2
+[more, zero]: {(2, 3)} {3, 0}
+[from, p, mn]: 2 5 1
+[more, zero]: {(2, 2)} {0}
+[from, p, mn]: 2 3 3
+[more, zero]: {} {}
+[from, p, mn]: 2 0 2

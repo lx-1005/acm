@@ -50,9 +50,8 @@ cmake_ninja_workdir = F$:/coder/acm/build/debug/
 build cmake_object_order_depends_target_main: phony || CMakeFiles/main.dir
 
 build CMakeFiles/main.dir/main.cpp.obj: CXX_COMPILER__main_unscanned_Debug F$:/coder/acm/main.cpp || cmake_object_order_depends_target_main
-  DEFINES = -DDEBUG -DLOCAL
   DEP_FILE = CMakeFiles\main.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir
 
@@ -67,7 +66,7 @@ build CMakeFiles/main.dir/main.cpp.obj: CXX_COMPILER__main_unscanned_Debug F$:/c
 build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -Wl,--stack,67108864
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\main.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -76,39 +75,174 @@ build main.exe: CXX_EXECUTABLE_LINKER__main_Debug CMakeFiles/main.dir/main.cpp.o
   TARGET_PDB = main.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target LCA
+# Object build statements for EXECUTABLE target A
 
 
 #############################################
-# Order-only phony target for LCA
+# Order-only phony target for A
 
-build cmake_object_order_depends_target_LCA: phony || CMakeFiles/LCA.dir
+build cmake_object_order_depends_target_A: phony || CMakeFiles/A.dir
 
-build CMakeFiles/LCA.dir/algorithm_template/数据结构/二叉树/LCA.cpp.obj: CXX_COMPILER__LCA_unscanned_Debug F$:/coder/acm/algorithm_template/数据结构/二叉树/LCA.cpp || cmake_object_order_depends_target_LCA
-  DEFINES = -DDEBUG -DLOCAL
-  DEP_FILE = CMakeFiles\LCA.dir\algorithm_template\数据结构\二叉树\LCA.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2
-  OBJECT_DIR = CMakeFiles\LCA.dir
-  OBJECT_FILE_DIR = CMakeFiles\LCA.dir\algorithm_template\数据结构\二叉树
+build CMakeFiles/A.dir/Codeforces/1822(div3)/A.cpp.obj: CXX_COMPILER__A_unscanned_Debug F$:/coder/acm/Codeforces/1822(div3)/A.cpp || cmake_object_order_depends_target_A
+  DEP_FILE = CMakeFiles\A.dir\Codeforces\1822(div3)\A.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
+  OBJECT_DIR = CMakeFiles\A.dir
+  OBJECT_FILE_DIR = CMakeFiles\A.dir\Codeforces\1822(div3)
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target LCA
+# Link build statements for EXECUTABLE target A
 
 
 #############################################
-# Link the executable LCA.exe
+# Link the executable A.exe
 
-build LCA.exe: CXX_EXECUTABLE_LINKER__LCA_Debug CMakeFiles/LCA.dir/algorithm_template/数据结构/二叉树/LCA.cpp.obj
+build A.exe: CXX_EXECUTABLE_LINKER__A_Debug CMakeFiles/A.dir/Codeforces/1822(div3)/A.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -Wl,--stack,67108864
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\LCA.dir
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\A.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = LCA.exe
-  TARGET_IMPLIB = libLCA.dll.a
-  TARGET_PDB = LCA.exe.dbg
+  TARGET_FILE = A.exe
+  TARGET_IMPLIB = libA.dll.a
+  TARGET_PDB = A.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target B
+
+
+#############################################
+# Order-only phony target for B
+
+build cmake_object_order_depends_target_B: phony || CMakeFiles/B.dir
+
+build CMakeFiles/B.dir/Codeforces/1822(div3)/B.cpp.obj: CXX_COMPILER__B_unscanned_Debug F$:/coder/acm/Codeforces/1822(div3)/B.cpp || cmake_object_order_depends_target_B
+  DEP_FILE = CMakeFiles\B.dir\Codeforces\1822(div3)\B.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
+  OBJECT_DIR = CMakeFiles\B.dir
+  OBJECT_FILE_DIR = CMakeFiles\B.dir\Codeforces\1822(div3)
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target B
+
+
+#############################################
+# Link the executable B.exe
+
+build B.exe: CXX_EXECUTABLE_LINKER__B_Debug CMakeFiles/B.dir/Codeforces/1822(div3)/B.cpp.obj
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\B.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = B.exe
+  TARGET_IMPLIB = libB.dll.a
+  TARGET_PDB = B.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target C
+
+
+#############################################
+# Order-only phony target for C
+
+build cmake_object_order_depends_target_C: phony || CMakeFiles/C.dir
+
+build CMakeFiles/C.dir/Codeforces/1822(div3)/C.cpp.obj: CXX_COMPILER__C_unscanned_Debug F$:/coder/acm/Codeforces/1822(div3)/C.cpp || cmake_object_order_depends_target_C
+  DEP_FILE = CMakeFiles\C.dir\Codeforces\1822(div3)\C.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
+  OBJECT_DIR = CMakeFiles\C.dir
+  OBJECT_FILE_DIR = CMakeFiles\C.dir\Codeforces\1822(div3)
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target C
+
+
+#############################################
+# Link the executable C.exe
+
+build C.exe: CXX_EXECUTABLE_LINKER__C_Debug CMakeFiles/C.dir/Codeforces/1822(div3)/C.cpp.obj
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\C.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = C.exe
+  TARGET_IMPLIB = libC.dll.a
+  TARGET_PDB = C.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target D
+
+
+#############################################
+# Order-only phony target for D
+
+build cmake_object_order_depends_target_D: phony || CMakeFiles/D.dir
+
+build CMakeFiles/D.dir/Codeforces/1822(div3)/D.cpp.obj: CXX_COMPILER__D_unscanned_Debug F$:/coder/acm/Codeforces/1822(div3)/D.cpp || cmake_object_order_depends_target_D
+  DEP_FILE = CMakeFiles\D.dir\Codeforces\1822(div3)\D.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
+  OBJECT_DIR = CMakeFiles\D.dir
+  OBJECT_FILE_DIR = CMakeFiles\D.dir\Codeforces\1822(div3)
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target D
+
+
+#############################################
+# Link the executable D.exe
+
+build D.exe: CXX_EXECUTABLE_LINKER__D_Debug CMakeFiles/D.dir/Codeforces/1822(div3)/D.cpp.obj
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\D.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = D.exe
+  TARGET_IMPLIB = libD.dll.a
+  TARGET_PDB = D.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target E
+
+
+#############################################
+# Order-only phony target for E
+
+build cmake_object_order_depends_target_E: phony || CMakeFiles/E.dir
+
+build CMakeFiles/E.dir/Codeforces/1822(div3)/E.cpp.obj: CXX_COMPILER__E_unscanned_Debug F$:/coder/acm/Codeforces/1822(div3)/E.cpp || cmake_object_order_depends_target_E
+  DEP_FILE = CMakeFiles\E.dir\Codeforces\1822(div3)\E.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -O2 -DLOCAL -DDEBUG
+  OBJECT_DIR = CMakeFiles\E.dir
+  OBJECT_FILE_DIR = CMakeFiles\E.dir\Codeforces\1822(div3)
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target E
+
+
+#############################################
+# Link the executable E.exe
+
+build E.exe: CXX_EXECUTABLE_LINKER__E_Debug CMakeFiles/E.dir/Codeforces/1822(div3)/E.cpp.obj
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,67108864
+  LINK_LIBRARIES = -I  -ldbg.hpp  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\E.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = E.exe
+  TARGET_IMPLIB = libE.dll.a
+  TARGET_PDB = E.exe.dbg
 
 
 #############################################
@@ -136,7 +270,15 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build LCA: phony LCA.exe
+build A: phony A.exe
+
+build B: phony B.exe
+
+build C: phony C.exe
+
+build D: phony D.exe
+
+build E: phony E.exe
 
 build main: phony main.exe
 
@@ -148,7 +290,7 @@ build main: phony main.exe
 #############################################
 # Folder: F:/coder/acm/build/debug
 
-build all: phony main.exe LCA.exe
+build all: phony main.exe A.exe B.exe C.exe D.exe E.exe
 
 # =============================================================================
 # Built-in targets

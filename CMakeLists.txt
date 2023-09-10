@@ -2,20 +2,13 @@ cmake_minimum_required(VERSION 3.24)
 project(acm)
 
 set(CMAKE_CXX_STANDARD 20)
-add_definitions(-DLOCAL -DDEBUG) # 本地调试
-
-add_compile_options(-O2)
+add_compile_options(-O2 -DLOCAL -DDEBUG)
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--stack,67108864")
-#add_compile_options(-Wconversion -Wduplicated-cond
-#                    -fsanitize=address -fsanitize=undefined -fsanitize=undefined -fno-sanitize-recover)
 
-add_executable(main main.cpp dbg.hpp)
-
-
-#add_executable(cf_a Codeforces/a.cpp dbg.hpp)
-#add_executable(cf_b Codeforces/b.cpp dbg.hpp)
-#add_executable(cf_c Codeforces/c.cpp dbg.hpp)
-#add_executable(cf_d Codeforces/d.cpp dbg.hpp)
-#add_executable(cf_e Codeforces/e.cpp dbg.hpp)
-#add_executable(cf_f Codeforces/f.cpp dbg.hpp)
-add_executable(LCA algorithm_template/数据结构/二叉树/LCA.cpp)
+link_libraries(-I dbg.hpp)
+add_executable(main main.cpp)
+add_executable(A "Codeforces/1822(div3)/A.cpp")
+add_executable(B "Codeforces/1822(div3)/B.cpp")
+add_executable(C "Codeforces/1822(div3)/C.cpp")
+add_executable(D "Codeforces/1822(div3)/D.cpp")
+add_executable(E "Codeforces/1822(div3)/E.cpp")

@@ -1,5 +1,5 @@
 #ifdef LOCAL
-#include "F:\coder\acm\dbg.hpp"
+#include "F:/coder/acm/dbg.hpp"
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"
 #define ERROR_FILE "F:/coder/acm/error.txt"
@@ -58,45 +58,33 @@ template<typename T, typename T1> T quick_power(T x, T y, T1 mod){LL res=1,cur=x
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 /*
 
-
-2 4 5 7
-
-1 1 8 8
-
+4: 2个4，3个3，2个2，5个1 = 8+9+4+5=26
+5：2个5，3个4，2个3，2个2，5个1 = 10+12+6+4+5=37
+6：2个6，3个5，2个4，2个3，2个2，5个1 = 12+15+8+6+4+5=50
+。。。
+n: 2, 3, 2, 2, ..., 2, 5
 
 */
-class Solution {
-public:
-    int numberOfPoints(vector<vector<int>>& nums) {
-        int ans = 0, n = nums.size(), l = nums[0][0], r = nums[0][1];
-        for (int i = 1; i < n; ++i) {
-            if (nums[i][0] > r) {
-                ans += r - l + 1;
-                l = nums[i][0];
-            }
-            r = max(r, nums[i][1]);
-        }
-        ans += r - l + 1;
-        return ans;
-    }
-};
+
 
 void solve() {
-    Solution sol;
-
-
+    LL n;
+    cin >> n;
+    cout << 2 * n + 3 * (n - 1) + 5 + n * (n - 3) << endl;
 }
 
 int main() {
+#ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
+#endif
     ios::sync_with_stdio(false); cin.tie(nullptr);
 
     int t = 1;
-//    cin >> t;
+    cin >> t;
     while (t--) solve();
 
     return 0;

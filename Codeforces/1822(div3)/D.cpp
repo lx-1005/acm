@@ -1,5 +1,5 @@
 #ifdef LOCAL
-#include "F:\coder\acm\dbg.hpp"
+#include "F:/coder/acm/dbg.hpp"
 #define INPUT_FILE "F:/coder/acm/input.txt"
 #define OUTPUT_FILE "F:/coder/acm/output.txt"
 #define ERROR_FILE "F:/coder/acm/error.txt"
@@ -58,45 +58,61 @@ template<typename T, typename T1> T quick_power(T x, T y, T1 mod){LL res=1,cur=x
 
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 /*
 
 
-2 4 5 7
-
-1 1 8 8
-
 
 */
-class Solution {
-public:
-    int numberOfPoints(vector<vector<int>>& nums) {
-        int ans = 0, n = nums.size(), l = nums[0][0], r = nums[0][1];
-        for (int i = 1; i < n; ++i) {
-            if (nums[i][0] > r) {
-                ans += r - l + 1;
-                l = nums[i][0];
-            }
-            r = max(r, nums[i][1]);
-        }
-        ans += r - l + 1;
-        return ans;
-    }
-};
+
 
 void solve() {
-    Solution sol;
+    int n;
+    cin >> n;
+    vector<int> a(n + 1);
+    vector<int> ans;
+    int mod = 0, pre = 0;
+    bool flg = true;
+    for (int i = 0; ans.size() < n; ++i) {
+        // i, n-1-i
+        mod = i - pre;
+        if (mod <= 0) mod += n;
+        if (a[mod]) flg = false;
+        ans.push_back(mod);
+        a[mod] = true;
+//        debug(i, mod);
+        pre = i;
 
+        if (ans.size() < n) {
+            mod = n - 1 - i - pre;
+            if (mod <= 0) mod += n;
+            if (a[mod]) flg = false;
+            ans.push_back(mod);
+            a[mod] = true;
+//            debug(n - 1 - i, mod);
+            pre = n - 1 - i;
+        }
+    }
+    if (flg) {
+        for (int x : ans) {
+            cout << x << ' ';
+        }
+        cout << "\n";
+    } else {
+        cout << -1 << endl;
+    }
 
 }
 
 int main() {
+#ifdef LOCAL
     freopen(INPUT_FILE, "r", stdin); freopen(OUTPUT_FILE, "w", stdout); freopen(ERROR_FILE, "w", stderr);
+#endif
     ios::sync_with_stdio(false); cin.tie(nullptr);
 
     int t = 1;
-//    cin >> t;
+    cin >> t;
     while (t--) solve();
 
     return 0;
