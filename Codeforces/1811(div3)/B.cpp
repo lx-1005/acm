@@ -56,46 +56,36 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 
 
 /*
+1
+...
+n/2
+...
+n
 
+ 4 4
+ 4 5
+ 5 4
+ 5 5
 
+ [1, n]
+ [2, n-1]
+ [3, n-2]
+ ...
+ [n/2,n/2+1]
+ 
 
 */
 
+
+
 void solve() {
-    int n;
-    cin >> n;
-    int a[n];
-    for (int i = 0; i < n; ++i) cin >> a[i];
+    int n, x1, y1, x2, y2;
+    cin >> n >> x1 >> y1 >> x2 >> y2;
 
-    // sum[i]: 前i个数的异或值
-    // bit[i][j]: 前r个数的异或值的第j位
-    // cnt[i][j]: 前0个，前1个，前2个，。。。，前i个，树的异或值的第j位为1的个数
-    LL sum[n + 1], bit[n + 1][32], cnt[n + 1][32];
-    mst(sum, 0);
-    mst(bit, 0);
-    mst(cnt, 0);
-    for (int i = 1; i <= n; ++i) {
-        sum[i] = sum[i - 1] ^ a[i - 1];
-        for (int j = 0; j < 32; ++j) {
-            bit[i][j] = bit[i - 1][j] ^ (a[i - 1] >> j & 1);
-            cnt[i][j] = cnt[i - 1][j] + (sum[i] >> j & 1);
-        }
-    }
-
-    LL ans = 0;
-    for (int r = 0; r < n; ++r) {
-        for (int k = 0; k < 32; ++k) {
-            LL x = bit[r + 1][k], t = 0;
-            if (x) t = r + 1 - cnt[r][k];
-            else t = cnt[r][k];
-            ans += t * (LL)(1 << k);
-        }
-    }
-    cout << ans << endl;
+    if (x1 > n / 2) x1 = n + 1 - x1;
+    if (x2 > n / 2) x2 = n + 1 - x2;
+    cout << abs(x1 - x2) << endl;
 }
-
-
-
 
 int main() {
 #ifdef LOCAL
@@ -104,10 +94,8 @@ int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr);
 
     int t = 1;
-//    cin >> t;
-    while (t--) {
-        solve();
-    }
+    cin >> t;
+    while (t--) solve();
 
     return 0;
 }
