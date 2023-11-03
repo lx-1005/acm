@@ -1,1 +1,0 @@
-{"name":"B. Binary Cafe","group":"Codeforces Round 878 (Div. 3)","url":"https://codeforces.com/contest/1840/problem/B","interactive":false,"memoryLimit":256,"timeLimit":1000,"tests":[{"input":"5\n1 2\n2 1\n2 2\n10 2\n179 100\n","output":"2\n2\n3\n4\n180\n","id":1689949802282}],"input":{"type":"stdin"},"output":{"type":"stdout"},"srcPath":"f:\\coder\\acm\\Codeforces\\1840B.cpp"}

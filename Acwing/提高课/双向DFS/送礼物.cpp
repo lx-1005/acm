@@ -1,88 +1,73 @@
-#ifdef LOCAL
-#pragma GCC optimize("O2")
-#pragma GCC optimize("O3")
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC target("avx,avx2,fma")
-#include "C:\Users\lx\Documents\SublimeText\dbg.hpp"
-#endif
+/*
+ * File: 01_送礼物.cpp
+ * Project: 0x25_双向搜索
+ * File Created: Sunday, 10th March 2021 8:09:48 pm
+ * Author: Bug-Free
+ * Problem: AcWing 171. 送礼物
+ */
+#include <algorithm>
+#include <iostream>
+#include <vector>
 
-#include <bits/stdc++.h>
-#include <ext/pb_ds/tree_policy.hpp>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <unordered_map>
-#include <unordered_set>
-using namespace __gnu_pbds; //required
 using namespace std;
 
-#define PB push_back
-#define EB emplace_back
-#define PF push_front
-#define LB lower_bound
-#define UB upper_bound
-#define MP make_pair
-#define MT make_tuple
-#define For(i, a, b) for(int i = (a); i < (int)(b); ++i)
-#define FOR(i, a, b) for(int i = (a); i <= (int)(b); ++i)
-#define RFOR(i, a, b) for(int i = (a); i >= (int)(b); --i)
-#define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
-#define mst(x, a) memset(x, a, sizeof(x))
-#define all(a) begin(a), end(a)
-#define rall(a) rbegin(a), rend(a)
-#define bitcnt(x) __builtin_popcountll(x) // 返回x的二进制1的个数
-#define lowbit(x) ((x) & (-(x)))   // 返回x的最低位1表示的数
-#define bitcnt_tailzero(x) (__builtin_ctz(x))   // 返回x的二进制末尾0的数量，例如16(10000)末尾有4个0
-#define SZ(x) (int)(x.size())
-#define shuffle(a) random_shuffle(all(a)) // 随机打乱a
-#define fi first
-#define se second
-#define yn(ans) printf("%s\n", (ans)?"Yes":"No");
-#define YN(ans) printf("%s\n", (ans)?"YES":"NO");
+typedef long long LL;
 
-using LL = long long;
-using ULL = unsigned long long;
-using DB = double;
-using VLL = std::vector<LL>;
-using VI = std::vector<int>;
-using VVI = std::vector<VI>;
-using VB = std::vector<bool>;
-using VVB = std::vector<std::vector<bool>>;
-using PII = std::pair<int, int>;
-using PLL = std::pair<LL, LL>;
-using PCI = pair<char, int>;
-using TIII = std::tuple<int, int, int>;
+const int N = 1 << 25;  // k最大是25， 因此最多可能有2^25种方案
 
-// 支持下标访问的ordered_set/ordered_multiset
-// 使用:
-//      ordered_set<int> s; 或 ordered_multiset<int> s;
-//      s.find_by_order(下标); // 返回s[下标]的迭代器
-//      s.order_of_key(x); // 返回s中严格<x的元素个数
-template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> using ordered_multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
-template<typename T> T MOD(T a, T m) { return (a % m + m) % m; } // 求 a%m
-template<typename T> T gcd(T a, T b) { return __gcd(a, b); } // a和b的最大公约数
-template<typename T> T lcm(T a, T b) { return a / __gcd(a, b) * b; } // a和b的最小公倍数
-template<typename T> T quick_power(T x, T y, T mod){ T res = 1, cur = x; while (y) { if (y & 1) res = res * cur % mod; cur = cur * cur % mod; y >>= 1; }return res % mod; }
+int n, m, k;
+int g[50];       // 存储所有物品的重量
+int weights[N];  // weights存储能凑出来的所有的重量
+int cnt = 0;
+int ans;  // 用ans来记录一个全局最大值
 
-const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f; // 10亿, 20亿
-// const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-// const int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-// const int dx[8] = {-1, -1, 0, 1, 1, 1, 0, -1}, dy[8] = {0, 1, 1, 1, 0, -1, -1, -1};
+// u表示当前枚举到哪个数了， s表示当前的和
+void dfs(int u, int s)
+{
+    // 如果我们当前已经枚举完第k个数（下标从0开始的）了， 就把当前的s， 加到weights中去
+    if (u == k) {
+        weights[cnt++] = s;
+        return;
+    }
 
+    // 枚举当前不选这个物品
+    dfs(u + 1, s);
 
-
-void solve() {
-
-
-
+    // 选这个物品, 做一个可行性剪枝
+    if ((LL)s + g[u] <= m) {  //计算和的时候转成long long防止溢出
+        dfs(u + 1, s + g[u]);
+    }
 }
 
-int main() {
-    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+void dfs2(int u, int s)
+{
+    if (u == n) {  // 如果已经找完了n个节点， 那么需要二分一下
+        int l = 0, r = cnt - 1;
+        while (l < r) {
+            int mid = (l + r + 1) >> 1;
+            if (weights[mid] <= m - s)
+                l = mid;
+            else
+                r = mid - 1;
+        }
+        ans = max(ans, weights[l] + s);
+        return;
+    }
 
-    int t = 1;
-    // cin >> t;
-    while (t--) solve();
+    // 不选择当前这个物品
+    dfs2(u + 1, s);
+
+    // 选择当前这个物品
+    if ((LL)s + g[u] <= m)
+        dfs2(u + 1, s + g[u]);
+}
+
+int main()
+{
+    cin >> m >> n;
+
+
+    cout << m + 5 << endl;
 
     return 0;
 }
