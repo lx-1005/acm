@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/lixu26/work/ACM/build",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin22-g++-13  -isystem /usr/local/include -O3 -Wall -Wextra -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -DFILEIO -D__APPLE__ -o \"CMakeFiles/A.dir/Codeforces/1797(div2)/A.cpp.o\" -c \"/Users/lixu26/work/ACM/Codeforces/1797(div2)/A.cpp\"",
+  "file": "/Users/lixu26/work/ACM/Codeforces/1797(div2)/A.cpp",
+  "output": "CMakeFiles/A.dir/Codeforces/1797(div2)/A.cpp.o"
+}
+]
