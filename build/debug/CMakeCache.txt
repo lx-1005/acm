@@ -248,6 +248,15 @@ acm_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 acm_SOURCE_DIR:STATIC=F:/coder/acm
 
+//Value Computed by CMake
+leetcode_BINARY_DIR:STATIC=F:/coder/acm/build/debug/Leetcode
+
+//Value Computed by CMake
+leetcode_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+leetcode_SOURCE_DIR:STATIC=F:/coder/acm/Leetcode
+
 
 ########################
 # INTERNAL cache entries

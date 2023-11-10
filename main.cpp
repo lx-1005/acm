@@ -50,7 +50,7 @@ inline int read(){int x=0,f=1;char ch=getchar();while(ch<'0'||ch>'9'){if(ch=='-'
 inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');return;}
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
-//const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
+const LL infll = (LL)inf << 32 | inf, INFLL = (LL)INF << 32 | INF;
 //const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 
 
@@ -61,37 +61,36 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 
 */
 
-void solve() {
-    int n;
-    cin >> n;
-    int a[n];
-    for (int i = 0; i < n; ++i) cin >> a[i];
+vector<PII> solve(vector<vector<int>>& g) {
+    vector<PII> path;
+    if (g.empty() || g[0].empty()) return path;
 
-    // sum[i]: 前i个数的异或值
-    // bit[i][j]: 前r个数的异或值的第j位
-    // cnt[i][j]: 前0个，前1个，前2个，。。。，前i个，树的异或值的第j位为1的个数
-    LL sum[n + 1], bit[n + 1][32], cnt[n + 1][32];
-    mst(sum, 0);
-    mst(bit, 0);
-    mst(cnt, 0);
-    for (int i = 1; i <= n; ++i) {
-        sum[i] = sum[i - 1] ^ a[i - 1];
-        for (int j = 0; j < 32; ++j) {
-            bit[i][j] = bit[i - 1][j] ^ (a[i - 1] >> j & 1);
-            cnt[i][j] = cnt[i - 1][j] + (sum[i] >> j & 1);
+    int n = g.size(), m = g[0].size();
+    vector<vector<int>> dp(n, vector<int>(m));
+    vector<vector<PII>> pre(n, vector<PII>(m));
+    dp[0][0] = g[0][0];
+    for (int i = 1; i < m; ++i) dp[0][i] = g[0][i] + dp[0][i - 1];
+    for (int i = 1; i < n; ++i) dp[i][0] = g[i][0] + dp[i - 1][0];
+
+    for (int i = 1; i < n; ++i) {
+        for (int j = 1; j < m; ++j) {
+            if (dp[i - 1][j] > dp[i][j - 1]) {
+                pre[i][j] = {i - 1, j};
+            } else {
+                pre[i][j] = {i, j - 1};
+            }
+            dp[i][j] = g[i][j] + max(dp[i - 1][j], dp[i][j - 1]);
         }
     }
 
-    LL ans = 0;
-    for (int r = 0; r < n; ++r) {
-        for (int k = 0; k < 32; ++k) {
-            LL x = bit[r + 1][k], t = 0;
-            if (x) t = r + 1 - cnt[r][k];
-            else t = cnt[r][k];
-            ans += t * (LL)(1 << k);
-        }
+    for (int i = n - 1, j = m - 1; i || j; ) {
+        path.push_back({i, j});
+        auto ii = i, jj = j;
+        i = pre[ii][jj].first, j = pre[ii][jj].second;
     }
-    cout << ans << endl;
+    path.emplace_back(0, 0);
+
+    return path;
 }
 
 
@@ -106,7 +105,13 @@ int main() {
     int t = 1;
 //    cin >> t;
     while (t--) {
-        solve();
+        int n, m;
+        cin >> n >> m;
+        vector<vector<int>> g = read<VVI>(n, m);
+        auto path = solve(g);
+        for (auto& [x, y] : path) {
+            cout << x << ' ' << y << endl;
+        }
     }
 
     return 0;
