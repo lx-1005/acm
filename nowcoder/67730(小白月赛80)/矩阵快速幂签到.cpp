@@ -1,3 +1,4 @@
+#include <functional>
 #ifdef LOCAL
 #include "/Users/lixu26/work/ACM/dbg.hpp"
 #endif
@@ -36,7 +37,7 @@ inline int read(){int x=0,f=1;char ch=getchar();while(ch<'0'||ch>'9'){if(ch=='-'
 inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');return;}
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -45,18 +46,48 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 
 */
 
+const int mod = 998244353;
 
+struct matrix {
+    LL x[2][2];
+    matrix() { 
+        mst(x, 0);
+    }
+};
 
-
-
-
-
-void solve() {
-
-
-
+matrix multiply(matrix& a, matrix& b) {
+    matrix c;
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 2; j++) {
+            for (int k = 0; k < 2; ++k) {
+                c.x[i][j] += a.x[i][k] * b.x[k][j];
+            }
+        }
+    }
+    return c;
 }
 
+matrix matrix_quick_pow(matrix& a, LL m) { // a的m次方
+    matrix ans;
+    while (m) {
+        if (m & 1) {
+            ans = multiply(ans, a);
+        }
+        a = multiply(a, a);
+        m >>= 1;
+    }
+    return ans;
+}
+
+void solve() {
+    LL n;
+    cin >> n; 
+
+    matrix a;
+    a.x[0][0] = a.x[1][1] = 2, a.x[1][0] = -1;
+    auto ans = matrix_quick_pow(a, n);
+    cout << ans.x[0][0] << '\n';    
+}
 
 
 

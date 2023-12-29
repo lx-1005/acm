@@ -8,11 +8,7 @@ set(CMAKE_CXX_FLAGS "-O3 -Wall -Wextra")
 
 
 link_libraries(-I dbg.hpp)
-<<<<<<< HEAD
 
 add_executable(A "Codeforces/1797(div2)/A.cpp")
 
 include_directories(SYSTEM "/usr/local/include")
-=======
-add_executable(main Leetcode/main.cpp)
->>>>>>> refs/remotes/origin/main

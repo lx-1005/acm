@@ -1,12 +1,22 @@
-#ifdef LOCAL
-#include "/Users/lixu26/work/ACM/dbg.hpp"
+#ifdef FILEIO
+#ifdef __APPLE__
+#define INPUT_FILE "/Users/lixu26/work/ACM/input.txt"
+#define OUTPUT_FILE "/Users/lixu26/work/ACM/output.txt"
+#define ERROR_FILE "/Users/lixu26/work/ACM/error.txt"
+#else
+#define INPUT_FILE "F:/coder/acm/input.txt"
+#define OUTPUT_FILE "F:/coder/acm/output.txt"
+#define ERROR_FILE "F:/coder/acm/error.txt"
+#endif
 #endif
 
 #include <bits/stdc++.h>
 using namespace std;
+
 #define PB push_back
 #define MP make_pair
-#define rep(i, a, b) for(int i = (a); i <= (int)(b); ++i)
+#define rep(i, a, b) for(int i = (a); i < (int)(b); ++i)
+#define REP(i, a, b) for(int i = (a); i <= (int)(b); ++i)
 #define per(i, a, b) for(int i = (a); i >= (int)(b); --i)
 #define complete_unique(a) a.erase(unique(begin(a), end(a)), end(a))
 #define mst(x, a) memset(x, a, sizeof(x))
@@ -17,7 +27,8 @@ using namespace std;
 #define bitcnt_headzero(x) (__builtin_clz(x))   // 返回x的二进制开头0的数量
 #define SZ(x) (int)(x.size())
 #define log2(x) log(x) / log(2)
-#define IO ios::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr);
+#define lcm(a, b) (LL)(a) * (b) / __gcd(a, b)
+
 using VI = std::vector<int>;
 using VVI = std::vector<VI>;
 using LL = long long;
@@ -26,18 +37,18 @@ using VB = std::vector<bool>;
 using VVB = std::vector<std::vector<bool>>;
 using PII = std::pair<int, int>;
 using PLL = std::pair<LL, LL>;
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 template<typename T1, typename T2> T1 MOD(T1 a, T2 m){return (T1)(a%m+m)%m;} // 求 a%m
-LL gcd(LL a,LL b){return b ? gcd(b, a%b) : a;} // a和b的最大公约数
-LL lcm(LL a,LL b){return a/gcd(a, b)*b;} // a和b的最小公倍数
 LL quick_power(LL x, LL y, LL mod){LL res=1,cur=x;while(y){if(y&1)res=res*cur%mod;cur=cur*cur%mod;y>>=1;}return (res%mod+mod)%mod;}
 inline int combination(int n,int k){int sum=0;if(n==k||k==0){return 1;}else{return combination(n-1,k)+ combination(n-1,k-1);}}
 inline int read(){int x=0,f=1;char ch=getchar();while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}while(ch>='0' && ch<='9')x=x*10+ch-'0',ch=getchar();return x*f;}
 inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');return;}
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
+
+
 
 /*
 
@@ -45,45 +56,17 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 
 */
 
-
-
-
-
-
-
-void solve() {
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int main() {
-    IO; int t = 1;
-//    cin >> t;
-    while (t--) {
-        solve();
+class Solution {
+public:
+    int maximumStrongPairXor(vector<int>& nums) {
+        int n = nums.size(), ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i; j < n; ++j) {
+                if (abs(nums[i] - nums[j]) <= min(nums[i], nums[j])) {
+                    ans = max(ans, nums[i] ^ nums[j]);
+                }
+            }
+        }
+        return ans;
     }
-
-    return 0;
-}
+};

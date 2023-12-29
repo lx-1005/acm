@@ -15,7 +15,7 @@ using namespace std;
 #define lowbit(x) ((x) & (-(x)))          // 返回x的最低位1表示的数
 #define bitcnt_tailzero(x) (__builtin_ctz(x))   // 返回x的二进制末尾0的数量，等价于x的最低位1是第几位
 #define bitcnt_headzero(x) (__builtin_clz(x))   // 返回x的二进制开头0的数量
-#define SZ(x) (int)(x.size())
+#define sz(x) (int)(x.size())
 #define log2(x) log(x) / log(2)
 #define IO ios::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr);
 using VI = std::vector<int>;
@@ -24,6 +24,8 @@ using LL = long long;
 using VLL = std::vector<LL>;
 using VB = std::vector<bool>;
 using VVB = std::vector<std::vector<bool>>;
+using VS = std::vector<std::string>;
+using VVS = std::vector<VS>;
 using PII = std::pair<int, int>;
 using PLL = std::pair<LL, LL>;
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,7 +38,7 @@ inline int read(){int x=0,f=1;char ch=getchar();while(ch<'0'||ch>'9'){if(ch=='-'
 inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');return;}
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
@@ -47,13 +49,37 @@ const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 
 
 
-
-
+class Solution {
+public:
+    int help(const string& a) {
+        int hour = (a[0] - '0') * 10 + a[1] - '0';
+        int min = (a[2] - '0') * 10 + a[3] - '0';
+        return hour * 60 + min;
+    }
+    bool check(const string& a, const string& b) {
+        return abs(help(a) - help(b)) < 60;
+    }
+    vector<string> findHighAccessEmployees(vector<vector<string>>& access_times) {
+        unordered_map<string, multiset<string>> g;
+        for (auto& time : access_times) {
+            g[time[0]].insert(time[1]);
+        }
+        VS ans;
+        for (auto& [_, times] : g) {
+            if (sz(times) < 3) continue;
+            for (auto it = next(next(times.begin())); it != times.end(); it++) {
+                if (check(*it, *(prev(prev(it))))) {
+                    ans.push_back(_);
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};
 
 
 void solve() {
-
-
 
 }
 

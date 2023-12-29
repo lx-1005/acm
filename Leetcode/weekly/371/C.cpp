@@ -15,7 +15,7 @@ using namespace std;
 #define lowbit(x) ((x) & (-(x)))          // 返回x的最低位1表示的数
 #define bitcnt_tailzero(x) (__builtin_ctz(x))   // 返回x的二进制末尾0的数量，等价于x的最低位1是第几位
 #define bitcnt_headzero(x) (__builtin_clz(x))   // 返回x的二进制开头0的数量
-#define SZ(x) (int)(x.size())
+#define sz(x) (int)(x.size())
 #define log2(x) log(x) / log(2)
 #define IO ios::sync_with_stdio(false);cin.tie(nullptr);cout.tie(nullptr);
 using VI = std::vector<int>;
@@ -36,24 +36,42 @@ inline int read(){int x=0,f=1;char ch=getchar();while(ch<'0'||ch>'9'){if(ch=='-'
 inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');return;}
 const int inf = 0x3f3f3f3f, INF = 0x7f7f7f7f;
 //const LL infll = 0x3f3f3f3f3f3f3f3f, INFLL = 0x7f7f7f7f7f7f7f7f;
-//const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+//const int dx[] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[] = {0, 1, 0, -1, 1, 1, -1, -1};
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
 
+只有两种情况：交换nums1[n-1]，nums2[n-1]，以及不交换
+对于每种情况，遍历[0, n-2]，如果本身满足就继续走；如果交换i可以满足，就交换后走；否则代表无法满足
 
 
 */
 
 
 
-
+class Solution {
+public:
+    const int mx = 1e9;
+    int ask(VI& nums1, VI& nums2) {
+        int cnt = 0, n = sz(nums1);
+        for (int i = 0; i < n - 1; i++) {
+            if (nums1[i] <= nums1[n - 1] && nums2[i] <= nums2[n - 1]) continue;
+            else if (nums1[i] <= nums2[n - 1] && nums2[i] <= nums1[n - 1]) cnt++;
+            else return mx;
+        }
+        return cnt;
+    }
+    int minOperations(vector<int>& nums1, vector<int>& nums2) {
+        int n = sz(nums1), ans = ask(nums1, nums2);
+        swap(nums1[n - 1], nums2[n - 1]);
+        ans = min(ans, ask(nums1, nums2) + 1);
+        return ans == mx ? -1 : ans;
+    }
+};
 
 
 
 void solve() {
-
-
 
 }
 
