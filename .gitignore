@@ -1,5 +1,6 @@
-./build/*
-./cmake-build-debug/*
-./.idea/*
-./.cache/*
-./.cph/*
+.DS_Store
+!./build/*
+!./cmake-build-debug/*
+!./.idea/*
+!./.cache/*
+!./.cph/*
