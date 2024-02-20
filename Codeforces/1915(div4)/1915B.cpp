@@ -32,7 +32,23 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+    string s;
+    for (int i = 0; i < 3; ++i) {
+        cin >> s;
+        if (find(all(s), '?') != s.end()) {
+            int a = 0, b = 0, c = 0;
+            for (auto x : s) {
+                if (x == 'A') {
+                    a++;
+                } else if (x == 'B') {
+                    b++;
+                } else if (x == 'C') {
+                    c++;
+                }
+            }
+            cout << (!a ? 'A' : (!b? 'B' : 'C')) << endl;
+        }
+    }
 }
 
 int main() {

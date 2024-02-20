@@ -32,7 +32,14 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+    ll n, x, area = 0;
+    cin >> n;
+    for (int i = 0; i < n; ++i) {
+        cin >> x;
+        area += x;
+    }
+    if ((ll)sqrtl(area) * (ll)sqrtl(area) == area) puts("YES");
+    else puts("NO");
 }
 
 int main() {

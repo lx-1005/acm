@@ -1,3 +1,7 @@
+#ifdef LOCAL
+#include "/Users/lixu26/work/ACM/dbg.hpp"
+#endif
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -32,7 +36,7 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+   
 }
 
 int main() {
@@ -55,6 +59,7 @@ int main() {
 
 #ifdef LOCAL
     clock_t end_time=clock();
+    freopen("/Users/lixu26/work/ACM/error.txt", "w", stderr);
     cerr<< "Running time is: "<<static_cast<double>(end_time-start_time)/CLOCKS_PER_SEC*1000<<"ms"<<endl;//输出运行时间
 #endif
 

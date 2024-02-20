@@ -1,3 +1,7 @@
+#ifdef LOCAL
+#include "/Users/lixu26/work/ACM/dbg.hpp"
+#endif
+
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -32,7 +36,9 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << (a ^ b ^ c) << endl;
 }
 
 int main() {
