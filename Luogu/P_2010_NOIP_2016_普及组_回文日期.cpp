@@ -27,13 +27,84 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+大模拟
 
 */
 
+bool ryear(int year) { // is闰年
+    return year % 400 || (year % 4 == 0 && year % 100);
+}
+
+void next_day(int& year, int& month, int& day) {
+    // 特殊情况：每个月的月底
+    if (month == 12 && day == 31) {
+        year++, month = 1, day = 1;
+        return;
+    }
+    if (month == 2) {
+        if ((ryear(year) && day == 29) 
+            || (!ryear(year) && day == 28)) {
+            month = 3, day = 1;
+            return;
+        }
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11) {
+        if (day == 30) {
+            month += 1, day = 1;
+            return;
+        }
+        
+    } else {
+        if (day == 31) {
+            month += 1, day = 1;
+            return;
+        }
+    }
+    // 正常情况
+    day += 1;
+}
+
+string change(int year, int month, int day) {
+    string s(to_string(year));
+    if (month < 10) s.push_back('0');
+    s += to_string(month);
+    if (day < 10) s.push_back('0');
+    s += to_string(day);
+    return s;
+}
+
+bool check(string s) {
+    for (int i = 0, j = sz(s) - 1; i < j; i++, j--) {
+        if (s[i] != s[j]) {
+            return false;
+        }
+    }
+    return true;
+}
 
 void solve() {
-    
+    string s1, s2;
+    cin >> s1 >> s2;
+    int year1 = stoi(s1.substr(0, 4));
+    int month1 = stoi(s1.substr(4, 2));
+    int day1 = stoi(s1.substr(6, 2));
+
+    int year2 = stoi(s2.substr(0, 4));
+    int month2 = stoi(s2.substr(4, 2));
+    int day2 = stoi(s2.substr(6, 2));
+
+    int ans = 0;
+    if (s1 == s2) {
+        if (check(change(year1, month1, day1))) ++ans;
+    } else {
+        while (!(year1 == year2 && month1 == month2 && day1 < day2)) {
+            next_day(year1, month1, day1);
+            if (check(change(year1, month1, day1))) {
+                ++ans;
+            }
+        }
+    }
+    cout << ans << endl;
 }
 
 int main() {

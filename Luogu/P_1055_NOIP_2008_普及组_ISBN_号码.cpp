@@ -27,13 +27,27 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+模拟
 
 */
 
 
 void solve() {
-    
+    string s;
+    cin >> s;
+    int x = 0;
+    for (int i = 0, j = 1; i < sz(s) - 1; i++) {
+        if (isdigit(s[i])) {
+            x += (s[i] - '0') * j++;
+        }
+    }
+    x %= 11;
+    char c = (x == 10 ? 'X' : (x + '0')); 
+    if (s.back() == c) puts("Right");
+    else {
+        s.back() = c;
+        puts(s.c_str());
+    }
 }
 
 int main() {

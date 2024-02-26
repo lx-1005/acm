@@ -27,13 +27,26 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+经典排序
 
 */
 
 
 void solve() {
-    
+    int n;
+    std::cin >> n;
+    std::vector<std::string> v(n);
+    for (int i = 0; i < n; ++i) {
+        std::cin >> v[i];
+    }
+    std::sort(v.begin(), v.end(), [](auto& s1, auto& s2) {
+        return s1 + s2 > s2 + s1;
+    });
+    std::string ans;
+    for (auto& vi : v) {
+        ans += vi;
+    }
+    cout << ans << "\n";
 }
 
 int main() {

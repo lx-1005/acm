@@ -31,9 +31,34 @@ const int inf = 0x3f3f3f3f;
 
 */
 
+bool check(string& s1, string s2) {
+    if (sz(s1) != sz(s2)) return false;
+    for (int i = 0; i < sz(s1); i++) {
+        if (tolower(s1[i]) != tolower(s2[i])) {
+            return false;
+        }
+    }
+    return true;
+}
 
 void solve() {
-    
+    string wd, s;
+    getline(cin, wd);
+    getline(cin, s);
+    int n = sz(s), cnt = 0, pos = 1e7;
+    for (int i = 0; i < n; i++) {
+        if (isspace(s[i])) continue;
+        int j = i;
+        for (; j < n && isalpha(s[j]); j++);
+        // [i, j)
+        if (check(wd, s.substr(i, j - i))) {
+            cnt++;
+            pos = min(pos, i);
+        }
+        i = j;
+    }
+    if (pos == 1e7) cout << -1 << endl;
+    else cout << cnt << ' ' << pos << endl;
 }
 
 int main() {

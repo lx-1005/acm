@@ -27,13 +27,37 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+模拟
 
 */
 
 
 void solve() {
-    
+    ll cnt = 0, T, idx = 0;
+    vector<string> a;
+    string s;
+    while (getline(cin, s), s != "EOF") {
+        string ss;
+        for (auto c:s) {
+            if (c != '<') ss.push_back(c);
+            else if (sz(ss)) ss.pop_back();
+        }
+        a.push_back(ss);
+    }
+    while (getline(cin, s), s != "EOF") {
+        if (idx == sz(a)) break;
+        string ss;
+        for (auto c:s) {
+            if (c != '<') ss.push_back(c);
+            else if (sz(ss)) ss.pop_back();
+        }
+        for (int i = 0; i < min(sz(a[idx]), sz(ss)); i++) {
+            cnt += a[idx][i] == ss[i];
+        }
+        idx++;
+    }
+    cin >> T;
+    cout << ll(cnt * 60.0 / T + 0.5) << "\n";
 }
 
 int main() {

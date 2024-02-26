@@ -27,13 +27,26 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+1. 从左往右不断添数，构造数列
+2. f[n]表示第一个数为n的合法数列个数，第二个数可能是[1~n/2]，不要忘记只有n这一个数的序列，因此f[n]=f[1]+f[2]+...+f[n/2]+1
 
 */
 
+ll f[1010];
+ll dfs(int n) { // 记忆化
+    if (n == 1) return 1;
+    if (f[n]) return f[n];
+
+    f[n]++;
+    for (int i = 1; i <= n / 2; i++) {
+        f[n] += dfs(i);
+    }
+    return f[n];
+}
 
 void solve() {
-    
+    int n; cin >> n;
+    cout << dfs(n) << endl;
 }
 
 int main() {

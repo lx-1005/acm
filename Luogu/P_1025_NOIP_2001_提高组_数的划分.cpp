@@ -33,7 +33,23 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+    int n, k;
+    cin >> n >> k;
+    vector dp(n + 1, vector<ll>(k + 1));
+    // dp[i][j]: 把i个球放到j个非空盒子的方案数
+    // 1. 存在1，那么不考虑1这个盒子，就相当于把i-1个球放到j-1个盒子的方案数：dp[i-1][j-1]
+    // 2. 不存在1，那么从每个盒子拿出一个球，相当于把i-k个球放到j个盒子的方案数：dp[i-k][j]
+    for (int i = 1; i <= n; i++) dp[i][0] = dp[i][1] = 1;
+    // dp[i][j]=0, i<j
+    for (int i = 2; i <= n; i++) {
+        for (int j = 2; j <= k; j++) {
+            dp[i][j] = dp[i - 1][j - 1];
+            if (i >= j) {
+                dp[i][j] += dp[i - j][j];
+            }
+        }
+    }
+    cout << dp[n][k] << "\n";
 }
 
 int main() {

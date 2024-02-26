@@ -27,13 +27,16 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+等差数列求和=(a[1]+a[n])*n/2
 
 */
 
 
 void solve() {
-    
+    ll a1, a2, n;
+    cin >> a1 >> a2 >> n;
+    ll d = a2 - a1;
+    cout << (a1 + a1 + d * (n - 1)) * n / 2;
 }
 
 int main() {

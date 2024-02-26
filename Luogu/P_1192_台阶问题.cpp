@@ -27,13 +27,23 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+dp
 
 */
 
+const int mod = 100003;
 
 void solve() {
-    
+    int N, K;
+    cin >> N >> K;
+    vector<ll> dp(N + 1);
+    dp[0] = 1;
+    for (int i = 1; i <= N; i++) {
+        for (int j = max(i - K, 0); j < i; j++) {
+            dp[i] = (dp[i] + dp[j]) % mod;
+        }
+    }
+    cout << dp[N] << "\n";
 }
 
 int main() {

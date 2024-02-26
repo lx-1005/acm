@@ -27,13 +27,25 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+放k个桶，记录每个桶内分别被在m天中的第几天出现
 
 */
 
 
 void solve() {
-    
+    int n, m, k;
+    std::cin >> n >> m >> k;
+    unordered_set<int> st[k];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int x; 
+            cin >> x;
+            st[x - 1].insert(j);
+        }
+    }
+    for (int i = 0; i < k; i++) {
+        cout << st[i].size() << " \n"[i == k - 1];
+    }
 }
 
 int main() {

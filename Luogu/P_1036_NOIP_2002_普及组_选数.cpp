@@ -31,9 +31,38 @@ const int inf = 0x3f3f3f3f;
 
 */
 
+bool isprimer(ll x) { //判断x是不是质数:O(sqrt(x))
+    if (x < 2) return false;
+
+    //如果x是合数，即存在一对数的乘积==x，则其中较小的那个数一定<=根号x
+    //这里的判断条件：i * i <= x这么写会溢出，i <= sqrt(x)这么写每轮求根号太慢
+    for (int i = 2; i <= x / i; ++i) {//试图找出较小的质因数
+        if (x % i == 0) return false;
+    }
+
+    return true;
+}
+
 
 void solve() {
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    for (int i = 0; i < n; ++i) cin >> a[i];
     
+    int ans = 0;
+    vector<ll> st(n);
+    fill(begin(st) + n - k, end(st), 1);
+    do {
+        ll sum = 0;
+        for (int i = 0; i < n; ++i) {
+            if (st[i] == 1) {
+                sum += a[i];
+            }
+        }
+        ans += isprimer(sum);
+    } while (next_permutation(st.begin(), st.end()));
+    cout << ans << "\n";
 }
 
 int main() {

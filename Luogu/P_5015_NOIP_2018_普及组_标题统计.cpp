@@ -33,7 +33,13 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    
+    string s;
+    getline(cin, s);
+    int ans = 0;
+    for (auto& si : s) {
+        ans += (isdigit(si) || isalpha(si));
+    }
+    cout << ans << "\n";
 }
 
 int main() {

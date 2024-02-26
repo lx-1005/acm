@@ -27,13 +27,25 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+1. a%M+b%m=(a+b)%M
+2. 找到最小的n>0，使得f[n]==0 && f[n+1]==1
+3. 可以暴力的原因：https://zh.wikipedia.org/wiki/%E7%9A%AE%E8%90%A8%E8%AF%BA%E5%91%A8%E6%9C%9F
 
 */
 
-
 void solve() {
-    
+    int M;
+    cin >> M;
+
+    ll a = 0, b = 1;
+    for (int i = 2; true; i++) {
+        ll c = (a + b) % M;
+        if (!b && c == 1) {
+            cout << i - 1 << "\n";
+            return;
+        }
+        a = b, b = c;
+    }
 }
 
 int main() {
