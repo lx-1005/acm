@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "random": "cpp",
+        "regex": "cpp",
+        "span": "cpp",
+        "chrono": "cpp",
+        "concepts": "cpp",
+        "ranges": "cpp",
+        "iomanip": "cpp",
+        "complex": "cpp",
+        "numeric": "cpp"
+    },
+    "cmake.sourceDirectory": "/Users/lixu26/work/ACM"
+}

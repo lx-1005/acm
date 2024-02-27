@@ -1,3 +1,8 @@
 {
-    "cmake.sourceDirectory": "/Users/lixu26/work/ACM"
+    "cmake.sourceDirectory": "/Users/lixu26/work/ACM",
+    "files.associations": {
+        "numeric": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp"
+    }
 }

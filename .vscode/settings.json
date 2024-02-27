@@ -6,5 +6,6 @@
         "vector": "cpp",
         "*.tcc": "cpp",
         "iosfwd": "cpp"
-    }
+    },
+    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
 }

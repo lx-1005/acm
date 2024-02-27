@@ -46,7 +46,7 @@ void solve() {
                     c++;
                 }
             }
-            cout << (!a ? 'A' : (!b? 'B' : 'C')) << endl;
+            cout << (!a ? 'A' : (!b ? 'B' : 'C')) << endl;
         }
     }
 }
