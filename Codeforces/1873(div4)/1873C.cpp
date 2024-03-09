@@ -27,16 +27,18 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-交换一次。最多让两个字母回到原处
-因此，若三个字母位置都不对，就无法通过一次恢复
+
 
 */
 
 
+
 void solve() {
-    string s;
-    cin >> s;
-    cout << ((s != "bca" && s != "cab") ? "YES" : "NO") << "\n";
+    map<int, int> mp {
+        
+    };
+
+        
 }
 
 int main() {

@@ -27,16 +27,40 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-交换一次。最多让两个字母回到原处
-因此，若三个字母位置都不对，就无法通过一次恢复
+填满需要sum单位的水
+二分：h较小时，需要<=x单位的水即可填满；h较大时，需要>x的水
+那么，找lb的最大值 -> rb的最小值-1
 
 */
 
 
+bool check(vector<int>& a, ll h, ll x) {
+    ll sum = 0;
+    for (ll ai : a) {
+        if (h > ai) {
+            sum += h - ai;
+        }
+    }
+    return sum > x;
+}
+
 void solve() {
-    string s;
-    cin >> s;
-    cout << ((s != "bca" && s != "cab") ? "YES" : "NO") << "\n";
+    int n, x;
+    cin >> n >> x;
+
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    // lb]: 需要<=x填满 [rb: 需要>x填满
+    // 找lb的最大值 -> rb-1
+    ll lb = 0, rb = 2e9 + 7;
+    while (lb + 1 < rb) {
+        ll mid = (lb + rb) >> 1;
+        if (check(a, mid, x)) rb = mid;
+        else lb = mid;
+    }
+    cout << lb << "\n";
 }
 
 int main() {

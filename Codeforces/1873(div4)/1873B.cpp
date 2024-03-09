@@ -27,9 +27,8 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-{a, b, c, d, ...}
-假设选择b+1，那么乘积变成a*(b+1)*c*...=a*b*c*...+a*c*d*...
-转化为找n-1个数的最大乘积
+假设a[i]+1，那么乘积变成a[0]*a[1]*...*(a[i]+1)*...*a[n-1]=n个数的乘积+除a[i]以外n-1个数的乘积
+因此等价于找最大的n-1个数的乘积
 
 */
 
@@ -37,16 +36,17 @@ const int inf = 0x3f3f3f3f;
 void solve() {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-
-    vector<int> L(n, 1), R(n, 1), mx(n, 0);
+    vector<int> a(n), L(n, 1);
+    for (int i = 0; i < n; i++) cin >> a[i];
     for (int i = 1; i < n; i++) L[i] = L[i - 1] * a[i - 1];
-    for (int i = n - 2; i >= 0; i--) R[i] = R[i + 1] * a[i + 1];
-    for (int i = 0; i < n; i++) mx[i] = L[i] * R[i];
-    cout << ranges::max(mx) + reduce(a.begin(), a.end(), 1, std::multiplies<>()) << "\n";
+    
+    int ans = a[n - 1], mx = L[n - 1], R = 1;
+    for (int i = n - 2; i >= 0; i--) {
+        R *= a[i + 1];
+        mx = max(mx, L[i] * R);
+        ans *= a[i];
+    }
+    cout << ans + mx << "\n";
 }
 
 int main() {
