@@ -10,6 +10,7 @@ cmake-build-debug/*
 *.cmake
 *.make
 *.yaml
+build/.cmake/*
 
 cmake-build-debug/cmake_install.cmake
 Luogu/bin/a.dSYM/Contents/Resources/DWARF/a
@@ -37,3 +38,6 @@ build/CMakeFiles/TargetDirectories.txt
 Luogu/bin/a
 Codeforces/1873(div4)/bin/a.dSYM/Contents/Info.plist
 Codeforces/1873(div4)/bin/a
+build/Makefile
+build/Makefile
+build/.cmake/api/v1/reply/cache-v2-63f9743416bbc6075ff1.json
