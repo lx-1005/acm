@@ -34,9 +34,13 @@ const int inf = 0x3f3f3f3f;
 
 
 void solve() {
-    string s;
+    string s, a = "abc";
     cin >> s;
-    cout << ((s != "bca" && s != "cab") ? "YES" : "NO") << "\n";
+    int cnt = 0;
+    for (int i = 0; i < 3; i++) {
+        cnt += (s[i] != a[i]);
+    }
+    cout << (cnt <= 2 ? "YES" : "NO") << "\n";
 }
 
 int main() {

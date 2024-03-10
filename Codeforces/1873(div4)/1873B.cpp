@@ -27,8 +27,10 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-假设a[i]+1，那么乘积变成a[0]*a[1]*...*(a[i]+1)*...*a[n-1]=n个数的乘积+除a[i]以外n-1个数的乘积
+1. 假设a[i]+1，那么乘积变成a[0]*a[1]*...*(a[i]+1)*...*a[n-1]=n个数的乘积+除a[i]以外n-1个数的乘积
 因此等价于找最大的n-1个数的乘积
+
+2. a[i]>=0，因此给min(a[])增加1最优
 
 */
 
@@ -36,17 +38,18 @@ const int inf = 0x3f3f3f3f;
 void solve() {
     int n;
     cin >> n;
-    vector<int> a(n), L(n, 1);
-    for (int i = 0; i < n; i++) cin >> a[i];
-    for (int i = 1; i < n; i++) L[i] = L[i - 1] * a[i - 1];
-    
-    int ans = a[n - 1], mx = L[n - 1], R = 1;
-    for (int i = n - 2; i >= 0; i--) {
-        R *= a[i + 1];
-        mx = max(mx, L[i] * R);
-        ans *= a[i];
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
     }
-    cout << ans + mx << "\n";
+    ranges::sort(a);
+    a[0] += 1;
+
+    int ans = 1;
+    for (int x : a) {
+        ans *= x;
+    }
+    cout << ans << "\n";
 }
 
 int main() {

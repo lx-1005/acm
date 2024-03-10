@@ -5,7 +5,10 @@
         "list": "cpp",
         "vector": "cpp",
         "*.tcc": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "__locale": "cpp",
+        "format": "cpp",
+        "ios": "cpp"
     },
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
 }

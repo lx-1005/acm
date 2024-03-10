@@ -8,7 +8,19 @@ import (
 )
 
 func solve(in *bufio.Reader, out *bufio.Writer) {
+	var n, k int
+	var s string
+	Fscan(in, &n, &k, &s)
 
+	ans := 0
+	for i := 0; i < n; i++ {
+		if s[i] == 'B' {
+			ans++
+			i += k - 1
+		}
+	}
+	Fprintln(out, ans)
+	return
 }
 
 func main() {

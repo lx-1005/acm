@@ -27,13 +27,44 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-
+1. AB->BC，代表B可以从后往前不断吃掉A
+BA->CB，达标B可以从前往后不断吃掉A
+2. 且一旦吃掉，会变成C，因此不能后悔
+3. 讨论开头和末尾字符
 
 */
 
-
 void solve() {
-    
+    string s;
+    cin >> s;
+
+    int n = sz(s), ans = 0;
+    int ca = count(s.begin(), s.end(), 'A');
+    if (s[0] == 'B' || s.end()[-1] == 'B') {
+        // 以B开头，每个B都可以吃掉它右侧的一排A；下个B又可以吃掉右侧的A；...
+        // 以B结尾同理，每个B都可以吃掉它左侧的A
+        ans = ca;
+    } else if (s.find("BB") != string::npos) {
+        // BB拆开，分别吃掉两侧的A
+        ans = ca; 
+    } else {
+        // 以A开头和结尾，且不存在连着的B
+        // 每个B都可以选择吃掉左侧或右侧的一排A，但一定有一组A无法吃掉
+        // 放弃最短的的那组A
+        int mn = 1e9;
+        for (int i = 0; i < n; i++) {
+            if (s[i] == 'A') {
+                int cnt = 0;
+                while (i < n && s[i] == 'A') {
+                    cnt++;
+                    i++;
+                }
+                mn = min(mn, cnt);
+            }
+        }
+        ans = ca - mn;
+    }
+    cout << ans << "\n";
 }
 
 int main() {
@@ -43,7 +74,7 @@ int main() {
 
     IO;
     int t = 1;
-    // std::cin >> t;
+    std::cin >> t;
     while (t--) {
         solve();
     }

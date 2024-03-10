@@ -8,7 +8,27 @@ import (
 )
 
 func solve(in *bufio.Reader, out *bufio.Writer) {
+	var n int
+	Fscan(in, &n)
+	a := make([]int, n)
+	for i := range a {
+		Fscan(in, &a[i])
+	}
 
+	ans := 0
+	for i := range a { // 枚举+1的那个数
+		mul := 1
+		for j, v := range a {
+			if j != i {
+				mul *= v
+			} else {
+				mul *= v + 1
+			}
+		}
+		ans = max(ans, mul)
+	}
+	Fprintln(out, ans)
+	return
 }
 
 func main() {

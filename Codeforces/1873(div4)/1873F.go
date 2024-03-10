@@ -8,7 +8,36 @@ import (
 )
 
 func solve(in *bufio.Reader, out *bufio.Writer) {
+	n, k := 0, 0
+	Fscan(in, &n, &k)
+	a, h := make([]int, n), make([]int, n)
+	for i := range a {
+		Fscan(in, &a[i])
+	}
+	for i := range h {
+		Fscan(in, &h[i])
+	}
 
+	ans := 0
+	f := func(a []int) {
+		s := 0
+		l := 0
+		for i := range a {
+			s += a[i]
+			for l <= i && s > k {
+				s -= a[l]
+				l++
+			}
+			ans = max(ans, i-l+1)
+		}
+	}
+	for i := 0; i < n; {
+		j := i
+		for i++; i < n && h[i-1]%h[i] == 0; i++ {
+		}
+		f(a[j:i])
+	}
+	Fprintln(out, ans)
 }
 
 func main() {
