@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.pl": "",
-        "cmath": "cpp",
-        "*.tcc": "cpp"
-    }
-}

@@ -1,3 +1,2 @@
-/Users/lixu26/work/ACM/build/CMakeFiles/A.dir
 /Users/lixu26/work/ACM/build/CMakeFiles/edit_cache.dir
 /Users/lixu26/work/ACM/build/CMakeFiles/rebuild_cache.dir

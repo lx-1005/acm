@@ -9,14 +9,20 @@ import (
 )
 
 func solve(in *bufio.Reader, out *bufio.Writer) {
+	a := make([]string, 2)
+	a[0] = "aaa"
+	a[1] = "bbb"
 
+	for i, ai := range a {
+		Fprintln(out, i, ai, len(a))
+	}
 }
 
 func main() {
 	in := bufio.NewReader(os.Stdin)
 	out := bufio.NewWriter(os.Stdout)
 	T := 1
-	Fscan(in, &T)
+	//Fscan(in, &T)
 	for ; T > 0; T-- {
 		solve(in, out)
 	}

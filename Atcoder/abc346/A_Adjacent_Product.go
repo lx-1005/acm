@@ -10,13 +10,22 @@ import (
 
 func solve(in *bufio.Reader, out *bufio.Writer) {
 	var n int
+	Fscan(in, &n)
+	a := make([]int, n)
+	for i := range a {
+		Fscan(in, &a[i])
+	}
+
+	for i := 0; i < n-1; i++ {
+		Fprint(out, a[i]*a[i+1], " ")
+	}
 }
 
 func main() {
 	in := bufio.NewReader(os.Stdin)
 	out := bufio.NewWriter(os.Stdout)
 	T := 1
-	Fscan(in, &T)
+	// Fscan(in, &T)
 	for ; T > 0; T-- {
 		solve(in, out)
 	}

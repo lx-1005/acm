@@ -116,43 +116,6 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named A
-
-# Build rule for target.
-A : cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 A
-.PHONY : A
-
-# fast build rule for target.
-A/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/A.dir/build.make CMakeFiles/A.dir/build
-.PHONY : A/fast
-
-Codeforces/1797(div2)/A.o: Codeforces/1797(div2)/A.cpp.o
-.PHONY : Codeforces/1797(div2)/A.o
-
-# target to build an object file
-Codeforces/1797(div2)/A.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/A.dir/build.make "CMakeFiles/A.dir/Codeforces/1797(div2)/A.cpp.o"
-.PHONY : Codeforces/1797(div2)/A.cpp.o
-
-Codeforces/1797(div2)/A.i: Codeforces/1797(div2)/A.cpp.i
-.PHONY : Codeforces/1797(div2)/A.i
-
-# target to preprocess a source file
-Codeforces/1797(div2)/A.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/A.dir/build.make "CMakeFiles/A.dir/Codeforces/1797(div2)/A.cpp.i"
-.PHONY : Codeforces/1797(div2)/A.cpp.i
-
-Codeforces/1797(div2)/A.s: Codeforces/1797(div2)/A.cpp.s
-.PHONY : Codeforces/1797(div2)/A.s
-
-# target to generate assembly for a file
-Codeforces/1797(div2)/A.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/A.dir/build.make "CMakeFiles/A.dir/Codeforces/1797(div2)/A.cpp.s"
-.PHONY : Codeforces/1797(div2)/A.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -161,10 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... A"
-	@echo "... Codeforces/1797(div2)/A.o"
-	@echo "... Codeforces/1797(div2)/A.i"
-	@echo "... Codeforces/1797(div2)/A.s"
 .PHONY : help
 
 
