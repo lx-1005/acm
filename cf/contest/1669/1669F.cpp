@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-16 16.29.51
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,16 +39,23 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+双指针
+
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+    vector<int> w(n);
+    cin >> w;
+
+    int ans = 0, sl = 0, sr = 0;
+    for (int l = 0, r = n - 1; l <= r; l++) {
+        sl += w[l];
+        while (sl > sr) sr += w[r--];
+        if (sl == sr && l <= r) ans = max(ans, l+n-r);
+    }
+    cout << ans << '\n';
 }
 
 int main() {

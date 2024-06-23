@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-18 13.40.40
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -38,17 +38,40 @@ const int inf = 0x3f3f3f3f;
 //  -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
-
+ 
+1. 八皇后写法，用截距b=y-ax表示直线
+2. y-x可能<0，所以要+n-1，保证b>0
+3. 主教若放在四个角，主教只会计算一次，无需-a[i][j] 
+ 
 */
+ 
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int>> a(n, vector<int>(m));
+    vector<ll> dg(n+m), udg(n+m);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> a[i][j];
+            dg[j+i] += a[i][j];
+            udg[j-i+n-1] += a[i][j];
+        }
+    }
+
+    ll ans = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            ll s = 0;
+            if ((!i && !j) || (i == n-1 && j == m-1)) s = udg[j-i+n-1];
+            else if ((!i && j == m-1) || (i == n-1 && !j)) s = dg[j+i];
+            else s = dg[j+i] + udg[j-i+n-1] - a[i][j];
+
+            ans = max(ans, s);
+        }
+    }
+    cout << ans << '\n';
 }
 
 int main() {

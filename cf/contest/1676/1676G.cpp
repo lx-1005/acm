@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-23 15.37.05
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -26,6 +26,7 @@ using i128 = __int128;
 #define bitcnt_tailzero(x) __builtin_ctz(x) // 返回x的二进制末尾0的数量，等价于x的最低位1是第几位
 #define bitcnt_headzero(x) (__builtin_clz(x)) // 返回x的二进制开头0的数量
 #define sz(x) (int)(x.size())
+#define pii pair<int, int>
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 template <typename T1, typename T2> T1 quick_mod(T1 a, T2 m) { return (T1)(a % m + m) % m; } // 求 a%m 
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }     // a和b的最小公倍数
@@ -42,17 +43,44 @@ const int inf = 0x3f3f3f3f;
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+    vector<int> a(n - 1);
+    map<int, vector<int>> sons;
+    for (int i = 2; i <= n; i++) {
+        cin >> a[i];
+        sons[a[i]].push_back(i);
+    }
+    
+    string s;
+    cin >> s;
+
+    int ans = 0;
+    vector<pii> cnt(n);
+    function<pii(int)> dfs = [&](int t) -> pii { // 树t的黑白节点个数（t是根节点）
+        auto& [B, W] = cnt[t - 1];
+        if (B || W) return {B, W};
+
+        if (s[t - 1] == 'B') B++;
+        else W++;
+        if (!sons.count(t)) {
+            return {B, W};
+        }
+
+        for (int son : sons[t]) {
+            auto [sb, sw] = dfs(son);
+            B += sb, W += sw;
+        }
+        ans += B == W;
+        return {B, W};
+    };
+    dfs(1);
+    cout << ans << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    cout << fixed << setprecision(10);
     auto start_time = clock();
 
     int T = 1;

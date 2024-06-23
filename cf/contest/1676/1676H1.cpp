@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-23 16.10.23
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,20 +39,33 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+从左到右遍历上端点，即i<j
+对于线段i->a[i]，只要a[j]<=a[i]，那么一定会有一个交点
+
+
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+    
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    int ans = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] <= a[i]) ++ans;
+        }
+    }
+    cout << ans << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    cout << fixed << setprecision(10);
     auto start_time = clock();
 
     int T = 1;

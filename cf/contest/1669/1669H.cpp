@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-16 17.03.10
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,16 +39,31 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+贪心：
+1. 从高位往低位
+2. 若无法把该位全部置成1，则不要浪费
+
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n, k;
+    cin >> n >> k;
+
+    int cnt[31] = {0};
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        for (int j = 0; j <= 30; j++) cnt[i] += x >> j & 1;
+    }
+
+    ll ans = 0;
+    for (int i = 30; i >= 0; i--) {
+        if (k >= n - cnt[i]) {
+            k -= n - cnt[i];
+            ans |= 1 << i;
+        }
+    }
+    cout << ans << '\n';
 }
 
 int main() {

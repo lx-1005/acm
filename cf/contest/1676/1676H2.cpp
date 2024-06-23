@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-23 16.10.23
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,20 +39,46 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+本体相当于求，a[i+1, n)中有多少个<=a[i]，相当于求逆序对（相等也算逆序）
+
+
 */
 
+const int N = 200010;
+int a[N], b[N];
+
+ll merge_sort(int l, int r) {
+    if (l >= r) return 0;
+
+    int mid = (l + r) >> 1;
+    ll ans = merge_sort(l, mid) + merge_sort(mid + 1, r);
+    int i = l, j = mid + 1, k = 0;
+    for (; i <= mid && j <= r; ) {
+        if (a[i] < a[j]) b[k++] = a[i++];
+        else {
+            ans += mid + 1 - i;
+            b[k++] = a[j++];
+        }
+    }
+    while (i <= mid) b[k++] = a[i++];
+    while (j <= r) b[k++] = a[j++];
+    for (k = 0, i = l; i <= r; ) a[i++] = b[k++];
+    return ans;
+}
+
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    cout << merge_sort(0, n - 1) << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    cout << fixed << setprecision(10);
     auto start_time = clock();
 
     int T = 1;

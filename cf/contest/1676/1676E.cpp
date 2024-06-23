@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-18 14.40.09
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,16 +39,30 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+贪心+二分+前缀和
+
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n, q;
+    cin >> n >> q;
+    vector<int> a(n);
+    cin >> a;
+    sort(a.begin(), a.end(), greater<int>());
+    vector<ll> sum(n + 1);
+    for (int i = 0; i < n; i++) {
+        sum[i+1] = sum[i] + a[i];
+    }
+
+    while (q--) {
+        ll x;
+        cin >> x;
+        if (sum[n] < x) {
+            cout << -1 << '\n';
+        } else {
+            cout << lower_bound(sum.begin(), sum.end(), x) - sum.begin() << '\n';
+        }
+    }
 }
 
 int main() {
@@ -60,7 +74,6 @@ int main() {
     while (T--) {
         solve();
     }
-
     auto end_time = clock();
 #ifdef LOCAL
     std::cerr << "Running time is: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000 << "ms" << "\n";  // 输出运行时间

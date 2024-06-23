@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-20 19.54.02
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -42,17 +42,41 @@ const int inf = 0x3f3f3f3f;
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n), b;
+    map<int, int> cnt;
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        if (++cnt[a[i]] == k) {
+            b.push_back(a[i]);
+        }
+    }
+    if (b.empty()) {
+        cout << "-1\n";
+        return;
+    }
+
+    sort(b.begin(), b.end());
+
+    int L = b[0], R = b[0];
+    int l = b[0], r = b[0];
+    for (int i = 1; i < sz(b); i++) {
+        if (b[i] == r + 1) r++;
+        else {
+            l = r = b[i];
+        }
+
+        if (r - l > R - L) {
+            L = l, R = r;
+        }
+    }
+    cout << L << ' ' << R << '\n';
 }
 
 int main() {
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    cout << fixed << setprecision(10);
     auto start_time = clock();
 
     int T = 1;

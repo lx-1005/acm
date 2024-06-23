@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-23 15.22.24
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -41,30 +41,18 @@ const int inf = 0x3f3f3f3f;
 
 */
 
-void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
-}
 
-int main() {
-    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
-    auto start_time = clock();
-
-    int T = 1;
-    cin >> T;
-    while (T--) {
-        solve();
+class Solution {
+public:
+    int minOperations(vector<int>& a) {
+        int n = 0, ans = 0, op = 0;
+        for (int x : a) {
+            x ^= op;
+            if (!x) {
+                ans++;
+                op ^= 1;
+            }
+        }
+        return ans;
     }
-
-    auto end_time = clock();
-#ifdef LOCAL
-    std::cerr << "Running time is: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000 << "ms" << "\n";  // 输出运行时间
-#endif
-
-    return 0;
-}
+};

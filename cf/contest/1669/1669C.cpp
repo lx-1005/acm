@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-16 15.21.37
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,16 +39,23 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+奇数位置应该相同的奇偶性
+偶数位置应该相同的奇偶性
+
 */
 
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    cin >> a;
+    for (int i = 0; i < n; i ++) {
+        if (a[i] % 2 != a[i%2] % 2) {
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
 }
 
 int main() {

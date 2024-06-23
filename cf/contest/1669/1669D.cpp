@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-16 15.14.33
+ *     created: 2024-06-16 15.27.45
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,16 +39,39 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+1. W分割开，各个部分独立考虑
+2. 无论前面怎么盖，最后一次盖章一定会出现R和B，因此不存在纯R或纯B
+3. 
+
 */
 
+bool ck(string& str) {
+    int r = 0, b = 0;
+    for (auto c : str) r += (c =='R'), b += (c == 'B');
+    return !r || !b;
+}
+
 void solve() {
-    int x;
-    cin >> x;
-    cout << "Division ";
-    if (x>=1900) cout << 1 << '\n';
-    else if (x>=1600) cout << 2 << '\n';
-    else if (x>=1400) cout << 3 << '\n';
-    else cout << 4 << '\n';
+    int n;
+    cin >> n;
+
+    string s;
+    cin >> s;
+    s.push_back('W');
+
+    int last = -1;
+    for (int i = 0; i <= n; i++) {
+        if (s[i] == 'W') {
+            auto str = s.substr(last + 1, i - last - 1);
+            int c = count(str.begin(), str.end(), 'R');
+            if (!str.empty() && (!c || c == sz(str))) { // 纯色
+                cout << "NO\n";
+                return;
+            }
+            last = i;
+        }
+    }
+    cout << "YES\n";
 }
 
 int main() {
