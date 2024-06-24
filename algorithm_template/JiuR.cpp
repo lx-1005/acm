@@ -16,7 +16,7 @@ using i128 = __int128;
 #define bitcnt_tailzero(x) __builtin_ctz(x) // 返回x的二进制末尾0的数量，等价于x的最低位1是第几位
 #define bitcnt_headzero(x) (__builtin_clz(x)) // 返回x的二进制开头0的数量
 #define sz(x) (int)(x.size())
-
+#define all(a) a.begin(),a.end()
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 template <typename T1, typename T2> T1 quick_mod(T1 a, T2 m) { return (T1)(a % m + m) % m; } // 求 a%m 
 ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }     // a和b的最小公倍数
