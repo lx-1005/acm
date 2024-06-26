@@ -24,23 +24,3 @@ func main() {
 	}
 	out.Flush()
 }
-
-func max(a, b int) int {
-	if b > a {
-		return b
-	}
-	return a
-}
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
-

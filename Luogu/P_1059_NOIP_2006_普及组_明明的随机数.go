@@ -43,22 +43,3 @@ func main() {
 		panic("有未读入的数据：\n" + s)
 	}
 }
-
-func max(a, b int) int {
-	if b > a {
-		return b
-	}
-	return a
-}
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-func min(a, b int) int {
-	if a > b {
-		return b
-	}
-	return a
-}
