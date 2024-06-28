@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.go": "go",
         "__split_buffer": "cpp",
         "deque": "cpp",
         "list": "cpp",
@@ -27,7 +28,9 @@
         "generator": "cpp",
         "ranges": "cpp",
         "stacktrace": "cpp",
-        "text_encoding": "cpp"
+        "text_encoding": "cpp",
+        "iomanip": "cpp",
+        "random": "cpp"
     },
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
 }

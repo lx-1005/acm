@@ -55,8 +55,10 @@ void solve() {
     }
     for (int i = 0; i < n; i++) {
         int b;
+        cin >> b;
+
         string s;
-        cin >> b >> s;
+        cin >> s;
 
         int U = count(all(s), 'U'), D = count(all(s), 'D');
         cout << ((a[i] + D - U) % 10 + 10) % 10 << ' ';

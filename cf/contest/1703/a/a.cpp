@@ -43,16 +43,12 @@ const int inf = 0x3f3f3f3f;
 */
 
 void solve() {
-    string s,t = "YES";
+    string s;
     cin >> s;
-    for (int i = 0; i < 3; i++) {
-        if (s[i] == t[i] || s[i] == t[i] + 32) {
-            continue;
-        }
-        cout << "NO\n";
-        return;
+    for (auto& si : s) {
+        si = toupper(si);
     }
-    cout << "YES\n";
+    cout << (s == "YES" ? "YES" : "NO") << "\n";
 }
 
 int main() {

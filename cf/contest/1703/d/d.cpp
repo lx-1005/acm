@@ -46,24 +46,22 @@ void solve() {
     int n;
     cin >> n;
     vector<string> s(n);
-    set<string> st;
     rep(i, 0, n) {
         cin >> s[i];
-        st.insert(s[i]);
     }
 
+    set<string> st(all(s));
     rep(i, 0, n) {
-        int m = sz(s[i]);
         bool ok = false;
-        for (int j = 0; j < m; j++) {
-            if (st.count(s[i].substr(0, j + 1)) && st.count(s[i].substr(j + 1))) {
+        for (int j = 0; j < sz(s[i]); j++) {
+            if (st.contains(s[i].substr(0, j + 1)) && st.contains(s[i].substr(j + 1))) {
                 ok = true;
                 break;
             }
         }
-        cout << (ok ? 1 : 0);
+        cout << ok;
     }
-    cout << '\n';
+    cout << "\n";
 }
 
 int main() {

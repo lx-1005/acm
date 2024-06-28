@@ -47,15 +47,7 @@ void solve() {
     string s;
     cin >> n >> s;
 
-    int ans = 0;
-    int cnt[26] = {};
-    for (char c : s) {
-        if (++cnt[c - 'A'] == 1) {
-            ++ans;
-        }
-        ++ans;
-    }
-    cout << ans << '\n';
+    cout << set<int>(all(s)).size() + n << '\n';
 }
 
 int main() {

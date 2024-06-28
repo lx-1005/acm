@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-06-27 17.50.49
+ *     created: 2024-06-27 16.37.12
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -40,31 +40,26 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
+1. a[i]<i<a[j]<j，相当于两个满足a[idx]<idx的位置，一个的下标<另一个的值，因此只需要考虑a[i]<i的位置
+2. 对于下标j，累计满足i<a[j]的元素个数
+3. 写法上，维护一个存下标的有序数组vis
+
 */
 
 void solve() {
     int n;
     cin >> n;
-    vector belong(n, vector<int>(n));
-    rep(i, 0, n) {
-        rep(j, 0, n) {
-            // 旋转过程中，这四个位置应该相等
-            belong[i][j] = belong[j][n - 1 - i] = belong[n - 1 - i][n - 1 - j] = belong[n - 1 - j][i] = i * n + j;
-        }
-    }
-
-    // 记录四个位置中，1和0的个数，应该修改少的
-    vector a(n * n, vector<int>(2));
-    rep(i, 0, n) {
-        rep(j, 0, n) {
-            char c;
-            cin >> c;
-            a[belong[i][j]][c - '0']++;
-        }
-    }
 
     ll ans = 0;
-    rep(i, 0, n * n) ans += min(a[i][0], a[i][1]);
+    vector<int> vis;
+    rep(i, 1, n + 1) {
+        int x;
+        cin >> x;
+        if (x < i) {
+            vis.push_back(i);
+            ans += (ll)distance(vis.begin(), lower_bound(all(vis), x));
+        }
+    }
     cout << ans << '\n';
 }
 
