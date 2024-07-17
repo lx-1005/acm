@@ -30,7 +30,9 @@
         "stacktrace": "cpp",
         "text_encoding": "cpp",
         "iomanip": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp"
     },
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
 }
