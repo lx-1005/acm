@@ -41,7 +41,11 @@ const int inf = 0x3f3f3f3f;
 
 /*
 
-二维前缀和
+二维前缀和：
+题意：能装下长hs宽ws的矩形，又能装入长hb宽wb的矩形
+
+1. a[i][j]表示有一个长i宽j的矩形，此处面积是i*j
+2. 等价于求左上角为[hs+1][ws+1]，右下角为[hb-1][wb-1]的矩形的前缀和
 
 */
 
@@ -60,16 +64,18 @@ void solve() {
         a[h[i]][w[i]] += h[i] * w[i];
     }    
 
+    ll sum[N][N] = {};
     for (int i = 1; i < N; i++) {
         for (int j = 1; j < N; j++) {
-            a[i][j] += a[i][j - 1] + a[i - 1][j] - a[i - 1][j - 1];
+            sum[i][j] = sum[i][j - 1] + sum[i - 1][j] - sum[i - 1][j - 1] + a[i][j];
         }
     }
 
     for (int i = 0; i < q; i++) {
         int hs, ws, hb, wb;
         cin >> hs >> ws >> hb >> wb;
-        cout << a[hb-1][wb-1]-a[hb-1][ws]-a[hs][wb-1]+a[hs][ws] << '\n';
+        cout << sum[hb-1][wb-1] - sum[hb-1][ws] - sum[hs][wb-1] + sum[hs][ws] << '\n';
+        // cout << a[hb-1][wb-1]-a[hb-1][ws]-a[hs][wb-1]+a[hs][ws] << '\n';
     }
 }
 
