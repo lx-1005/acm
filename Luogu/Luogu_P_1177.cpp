@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-07-17 23.43.07
+ *     created: 2024-07-20 18.54.06
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -38,27 +38,37 @@ const int inf = 0x3f3f3f3f;
 // const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 //  -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 
+*/
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
 
-class Solution {
-public:
-    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        set<int> st(all(nums));
+    sort(all(a));
 
-        auto dummy = new ListNode(-1, head);
-        auto p = dummy;
-        while (p->next) {
-            if (st.count(p->next->val)) p->next = p->next->next;
-            else p = p->next;
-        }
-        return dummy->next;
+    for (int& x : a) cout << x << " \n"[&x == &a.back()];
+
+}
+
+int main() {
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+    cout << fixed << setprecision(10);
+    auto start_time = clock();
+
+    int T = 1;
+    // cin >> T;
+    while (T--) {
+        solve();
     }
-};
+
+    auto end_time = clock();
+#ifdef LOCAL
+    std::cerr << "Running time is: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC * 1000 << "ms" << "\n";  // 输出运行时间
+#endif
+
+    return 0;
+}

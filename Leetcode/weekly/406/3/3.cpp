@@ -1,6 +1,6 @@
 /** 
  *     author:  JiuR
- *     created: 2024-07-17 23.43.07
+ *     created: 2024-07-17 23.47.22
 **/
 #include <bits/stdc++.h>
 using namespace std;
@@ -38,27 +38,29 @@ const int inf = 0x3f3f3f3f;
 // const int dx[8] = {-1, 0, 1, 0, -1, 1, 1, -1}, dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
 //  -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
+*/
 
 class Solution {
 public:
-    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        set<int> st(all(nums));
+    int minimumCost(int m, int n, vector<int>& a, vector<int>& b) {
+        vector<int> sa(m - 1), sb(n - 1);
+        for (int i = 1; i < m; i++) sa[i] = sa[i - 1] + a[i - 1];
+        for (int i = 1; i < n; i++) sb[i] = sb[i - 1] + b[i - 1];
 
-        auto dummy = new ListNode(-1, head);
-        auto p = dummy;
-        while (p->next) {
-            if (st.count(p->next->val)) p->next = p->next->next;
-            else p = p->next;
+        vector<vector<int>> dp(m, vector<int>(n));
+        dp[1][1] = a[0] + b[0];
+        for (int i = 2; i < n - 1; i++) dp[1][i] = dp[1][i - 1] + b[i - 1];
+        dp[1][n - 1] = dp[1][n - 2];
+        for (int i = 2; i < m - 1; i++) dp[i][1] = dp[i - 1][1] + a[i - 1];
+        dp[m - 1][1] = dp[m - 2][1];
+
+        for (int i = 2; i < m; i++) {
+            for (int j = 2; j < n; j++) {
+                dp[i][j] = min(dp[i - 1][j] + sb[j - 1], dp[i][j - 1] + sa[i - 1]);
+            }
         }
-        return dummy->next;
+        cout << dp[m - 1][n - 1] << '\n';
     }
 };

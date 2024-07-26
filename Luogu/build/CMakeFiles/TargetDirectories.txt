@@ -1,2 +1,0 @@
-/Users/lixu26/work/ACM/Luogu/build/CMakeFiles/edit_cache.dir
-/Users/lixu26/work/ACM/Luogu/build/CMakeFiles/rebuild_cache.dir
