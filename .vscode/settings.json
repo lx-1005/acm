@@ -108,7 +108,10 @@
         "stdfloat": "cpp",
         "stop_token": "cpp",
         "syncstream": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "filesystem": "cpp",
+        "version": "cpp"
     },
-    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd"
+    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
+    "terminal.integrated.tabStopWidth": 4
 }
